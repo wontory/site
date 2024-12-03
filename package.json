@@ -1,16 +1,20 @@
 {
-	"name": "site",
-	"private": true,
-	"scripts": {
-		"build": "turbo build",
-		"dev": "turbo dev"
-	},
-	"devDependencies": {
-		"turbo": "^2.3.3",
-		"typescript": "5.5.4"
-	},
-	"packageManager": "pnpm@9.0.0",
-	"engines": {
-		"node": ">=18"
-	}
+  "name": "site",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "check": "biome check",
+    "check:write": "biome check --write",
+    "check:write:unsafe": "biome check --write --unsafe"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "turbo": "^2.3.3",
+    "typescript": "5.5.4"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=18"
+  }
 }
