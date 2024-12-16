@@ -4,6 +4,30 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@types/node':
+      specifier: ^22.10.2
+      version: 22.10.2
+    '@types/react':
+      specifier: 19.0.1
+      version: 19.0.1
+    '@types/react-dom':
+      specifier: 19.0.2
+      version: 19.0.2
+    next:
+      specifier: 15.1.0
+      version: 15.1.0
+    react:
+      specifier: 19.0.0
+      version: 19.0.0
+    react-dom:
+      specifier: 19.0.0
+      version: 19.0.0
+    typescript:
+      specifier: 5.7.2
+      version: 5.7.2
+
 importers:
 
   .:
@@ -39,29 +63,60 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       next:
-        specifier: 15.1.0
+        specifier: 'catalog:'
         version: 15.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
-        specifier: 19.0.0
+        specifier: 'catalog:'
         version: 19.0.0
       react-dom:
-        specifier: 19.0.0
+        specifier: 'catalog:'
         version: 19.0.0(react@19.0.0)
     devDependencies:
       '@config/typescript':
         specifier: workspace:*
         version: link:../../configs/typescript
       '@types/node':
-        specifier: ^22.10.2
+        specifier: 'catalog:'
         version: 22.10.2
       '@types/react':
-        specifier: 19.0.1
+        specifier: 'catalog:'
         version: 19.0.1
       '@types/react-dom':
-        specifier: 19.0.2
+        specifier: 'catalog:'
         version: 19.0.2(@types/react@19.0.1)
       typescript:
-        specifier: 5.7.2
+        specifier: 'catalog:'
+        version: 5.7.2
+
+  apps/playground:
+    dependencies:
+      '@package/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      next:
+        specifier: 'catalog:'
+        version: 15.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: 'catalog:'
+        version: 19.0.0
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.0.0(react@19.0.0)
+    devDependencies:
+      '@config/typescript':
+        specifier: workspace:*
+        version: link:../../configs/typescript
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.10.2
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.0.1
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.0.2(@types/react@19.0.1)
+      typescript:
+        specifier: 'catalog:'
         version: 5.7.2
 
   apps/www:
@@ -70,29 +125,29 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       next:
-        specifier: 15.1.0
+        specifier: 'catalog:'
         version: 15.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
-        specifier: 19.0.0
+        specifier: 'catalog:'
         version: 19.0.0
       react-dom:
-        specifier: 19.0.0
+        specifier: 'catalog:'
         version: 19.0.0(react@19.0.0)
     devDependencies:
       '@config/typescript':
         specifier: workspace:*
         version: link:../../configs/typescript
       '@types/node':
-        specifier: ^22.10.2
+        specifier: 'catalog:'
         version: 22.10.2
       '@types/react':
-        specifier: 19.0.1
+        specifier: 'catalog:'
         version: 19.0.1
       '@types/react-dom':
-        specifier: 19.0.2
+        specifier: 'catalog:'
         version: 19.0.2(@types/react@19.0.1)
       typescript:
-        specifier: 5.7.2
+        specifier: 'catalog:'
         version: 5.7.2
 
   configs/typescript: {}
@@ -100,10 +155,10 @@ importers:
   packages/ui:
     dependencies:
       react:
-        specifier: 19.0.0
+        specifier: 'catalog:'
         version: 19.0.0
       react-dom:
-        specifier: 19.0.0
+        specifier: 'catalog:'
         version: 19.0.0(react@19.0.0)
     devDependencies:
       '@config/typescript':
@@ -113,16 +168,16 @@ importers:
         specifier: ^2.3.3
         version: 2.3.3(@types/node@22.10.2)(typescript@5.7.2)
       '@types/node':
-        specifier: ^22.10.2
+        specifier: 'catalog:'
         version: 22.10.2
       '@types/react':
-        specifier: 19.0.1
+        specifier: 'catalog:'
         version: 19.0.1
       '@types/react-dom':
-        specifier: 19.0.2
+        specifier: 'catalog:'
         version: 19.0.2(@types/react@19.0.1)
       typescript:
-        specifier: 5.7.2
+        specifier: 'catalog:'
         version: 5.7.2
 
 packages:
