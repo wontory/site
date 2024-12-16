@@ -33,7 +33,7 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
 
-  apps/docs:
+  apps/blog:
     dependencies:
       '@package/ui':
         specifier: workspace:*
@@ -64,7 +64,7 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
 
-  apps/web:
+  apps/www:
     dependencies:
       '@package/ui':
         specifier: workspace:*
