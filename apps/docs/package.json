@@ -11,15 +11,15 @@
   },
   "dependencies": {
     "@package/ui": "workspace:*",
-    "next": "15.0.3",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106"
+    "next": "15.1.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
   },
   "devDependencies": {
     "@config/typescript": "workspace:*",
-    "@types/node": "^20",
-    "@types/react": "18.3.1",
-    "@types/react-dom": "18.3.0",
-    "typescript": "5.5.4"
+    "@types/node": "^22.10.2",
+    "@types/react": "19.0.1",
+    "@types/react-dom": "19.0.2",
+    "typescript": "5.7.2"
   }
 }
