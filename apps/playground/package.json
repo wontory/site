@@ -17,9 +17,11 @@
   },
   "devDependencies": {
     "@config/typescript": "workspace:*",
+    "@tailwindcss/postcss": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "tailwindcss": "catalog:",
     "typescript": "catalog:"
   }
 }
