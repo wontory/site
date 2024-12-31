@@ -68,9 +68,9 @@ importers:
 
   apps/blog:
     dependencies:
-      '@package/ui':
+      '@package/design-system':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/design-system
       motion:
         specifier: 'catalog:'
         version: 11.15.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -108,9 +108,9 @@ importers:
 
   apps/playground:
     dependencies:
-      '@package/ui':
+      '@package/design-system':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/design-system
       motion:
         specifier: 'catalog:'
         version: 11.15.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -148,9 +148,9 @@ importers:
 
   apps/www:
     dependencies:
-      '@package/ui':
+      '@package/design-system':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/design-system
       motion:
         specifier: 'catalog:'
         version: 11.15.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -188,7 +188,7 @@ importers:
 
   configs/typescript: {}
 
-  packages/ui:
+  packages/design-system:
     dependencies:
       react:
         specifier: 'catalog:'

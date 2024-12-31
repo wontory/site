@@ -1,15 +1,13 @@
 {
-  "name": "@package/ui",
+  "name": "@package/design-system",
   "version": "0.0.0",
   "type": "module",
   "private": true,
   "exports": {
-    "./button": "./src/button.tsx",
-    "./card": "./src/card.tsx",
-    "./code": "./src/code.tsx"
+    "./button": "./src/button.tsx"
   },
   "scripts": {
-    "generate:component": "turbo gen react-component",
+    "generate:component": "turbo gen component",
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
