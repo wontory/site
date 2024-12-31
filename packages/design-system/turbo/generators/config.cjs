@@ -1,5 +1,6 @@
 /**
  * @param {import('@turbo/gen').PlopTypes.NodePlopAPI} plop
+ * @returns {void}
  */
 function generator(plop) {
   plop.setGenerator('component', {
