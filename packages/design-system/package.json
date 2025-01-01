@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "exports": {
-    "./button": "./src/button.tsx"
+    "./button": "./src/components/button.tsx"
   },
   "scripts": {
     "generate:component": "turbo gen component",
