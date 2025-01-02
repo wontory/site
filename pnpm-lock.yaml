@@ -190,9 +190,9 @@ importers:
 
   packages/design-system:
     dependencies:
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
+      '@package/utility':
+        specifier: workspace:*
+        version: link:../utility
       cva:
         specifier: 1.0.0-beta.2
         version: 1.0.0-beta.2(typescript@5.7.2)
@@ -208,9 +208,6 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.0.0(react@19.0.0)
-      tailwind-merge:
-        specifier: ^2.6.0
-        version: 2.6.0
     devDependencies:
       '@chromatic-com/storybook':
         specifier: ^3.2.3
@@ -260,6 +257,22 @@ importers:
       tailwindcss:
         specifier: 'catalog:'
         version: 4.0.0-beta.8
+      typescript:
+        specifier: 'catalog:'
+        version: 5.7.2
+
+  packages/utility:
+    dependencies:
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      tailwind-merge:
+        specifier: ^2.6.0
+        version: 2.6.0
+    devDependencies:
+      '@config/typescript':
+        specifier: workspace:*
+        version: link:../../configs/typescript
       typescript:
         specifier: 'catalog:'
         version: 5.7.2
