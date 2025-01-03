@@ -18,6 +18,11 @@ function generator(plop) {
         path: 'src/components/{{kebabCase name}}.tsx',
         templateFile: 'templates/component.hbs',
       },
+      {
+        type: 'add',
+        path: 'src/stories/{{kebabCase name}}.stories.tsx',
+        templateFile: 'templates/story.hbs',
+      },
     ],
   })
 }
