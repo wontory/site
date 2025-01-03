@@ -3,13 +3,13 @@ import { HeartIcon } from 'lucide-react'
 
 import { Button } from '../components/button.js'
 
-const meta: Meta<typeof Button> = {
-  component: Button,
-}
+const meta: Meta<typeof Button> = { component: Button }
+
+export default meta
 
 type Story = StoryObj<typeof Button>
 
-export const Primary: Story = {
+const Primary: Story = {
   args: {
     variant: 'default',
     size: 'default',
@@ -17,7 +17,7 @@ export const Primary: Story = {
   },
 }
 
-export const Secondary: Story = {
+const Secondary: Story = {
   args: {
     variant: 'secondary',
     size: 'default',
@@ -25,7 +25,7 @@ export const Secondary: Story = {
   },
 }
 
-export const Destructive: Story = {
+const Destructive: Story = {
   args: {
     variant: 'destructive',
     size: 'default',
@@ -33,7 +33,7 @@ export const Destructive: Story = {
   },
 }
 
-export const Outline: Story = {
+const Outline: Story = {
   args: {
     variant: 'outline',
     size: 'default',
@@ -41,7 +41,7 @@ export const Outline: Story = {
   },
 }
 
-export const Ghost: Story = {
+const Ghost: Story = {
   args: {
     variant: 'ghost',
     size: 'default',
@@ -49,7 +49,7 @@ export const Ghost: Story = {
   },
 }
 
-export const Link: Story = {
+const Link: Story = {
   args: {
     variant: 'link',
     size: 'default',
@@ -57,7 +57,7 @@ export const Link: Story = {
   },
 }
 
-export const Large: Story = {
+const Large: Story = {
   args: {
     variant: 'default',
     size: 'lg',
@@ -65,7 +65,7 @@ export const Large: Story = {
   },
 }
 
-export const Small: Story = {
+const Small: Story = {
   args: {
     variant: 'default',
     size: 'sm',
@@ -73,7 +73,7 @@ export const Small: Story = {
   },
 }
 
-export const Icon: Story = {
+const Icon: Story = {
   args: {
     variant: 'default',
     size: 'icon',
@@ -81,4 +81,14 @@ export const Icon: Story = {
   },
 }
 
-export default meta
+export {
+  Primary,
+  Secondary,
+  Destructive,
+  Outline,
+  Ghost,
+  Link,
+  Large,
+  Small,
+  Icon,
+}
