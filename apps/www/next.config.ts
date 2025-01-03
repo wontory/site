@@ -7,11 +7,11 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/blog',
-        destination: `${BLOG_DOMAIN}`,
+        destination: `${BLOG_DOMAIN}/blog`,
       },
       {
         source: '/blog/:path*',
-        destination: `${BLOG_DOMAIN}/:path*`,
+        destination: `${BLOG_DOMAIN}/blog/:path*`,
       },
       {
         source: '/blog-static/:path*',
@@ -19,11 +19,11 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/playground',
-        destination: `${PLAYGROUND_DOMAIN}`,
+        destination: `${PLAYGROUND_DOMAIN}/playground`,
       },
       {
         source: '/playground/:path*',
-        destination: `${PLAYGROUND_DOMAIN}/:path*`,
+        destination: `${PLAYGROUND_DOMAIN}/playground/:path*`,
       },
       {
         source: '/playground-static/:path*',
