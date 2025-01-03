@@ -10,24 +10,24 @@ const nextConfig: NextConfig = {
         destination: `${BLOG_DOMAIN}/blog`,
       },
       {
-        source: '/blog/:path*',
-        destination: `${BLOG_DOMAIN}/blog/:path*`,
+        source: '/blog/:path+',
+        destination: `${BLOG_DOMAIN}/blog/:path+`,
       },
       {
-        source: '/blog-static/:path*',
-        destination: `${BLOG_DOMAIN}/blog-static/:path*`,
+        source: '/blog-static/:path+',
+        destination: `${BLOG_DOMAIN}/blog-static/:path+`,
       },
       {
         source: '/playground',
         destination: `${PLAYGROUND_DOMAIN}/playground`,
       },
       {
-        source: '/playground/:path*',
-        destination: `${PLAYGROUND_DOMAIN}/playground/:path*`,
+        source: '/playground/:path+',
+        destination: `${PLAYGROUND_DOMAIN}/playground/:path+`,
       },
       {
-        source: '/playground-static/:path*',
-        destination: `${PLAYGROUND_DOMAIN}/playground-static/:path*`,
+        source: '/playground-static/:path+',
+        destination: `${PLAYGROUND_DOMAIN}/playground-static/:path+`,
       },
     ]
   },
