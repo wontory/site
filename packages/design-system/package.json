@@ -1,0 +1,44 @@
+{
+  "name": "@package/design-system",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./components/*": "./src/components/*.tsx",
+    "./icons/*": "./src/icons/*.ts",
+    "./styles/*": "./src/styles/*.css"
+  },
+  "scripts": {
+    "generate:component": "turbo gen component",
+    "check-types": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.3",
+    "@config/typescript": "workspace:*",
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/addon-onboarding": "^8.4.7",
+    "@storybook/blocks": "^8.4.7",
+    "@storybook/react": "^8.4.7",
+    "@storybook/react-vite": "^8.4.7",
+    "@storybook/test": "^8.4.7",
+    "@tailwindcss/postcss": "catalog:",
+    "@turbo/gen": "^2.3.3",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "storybook": "^8.4.7",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "@package/utility": "workspace:*",
+    "cva": "1.0.0-beta.2",
+    "lucide-react": "^0.469.0",
+    "motion": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  }
+}
