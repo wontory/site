@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source '../../../../packages/design-system/**/*.{ts,tsx}';
 
 @layer base {
   :root {
@@ -84,6 +85,8 @@
 
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --font-sans: var(--font-pretendard);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

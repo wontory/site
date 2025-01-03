@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
-import '~/styles/globals.css'
+import { pretendard } from '@package/design-system/fonts/pretendard'
+import '@package/design-system/styles/globals.css'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" className={pretendard.variable}>
       <body>{children}</body>
     </html>
   )
