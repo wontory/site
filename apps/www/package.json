@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@package/design-system": "workspace:*",
+    "@package/utility": "workspace:*",
     "motion": "catalog:",
     "next": "catalog:",
     "react": "catalog:",
