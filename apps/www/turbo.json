@@ -1,0 +1,8 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "env": ["BLOG_DOMAIN", "PLAYGROUND_DOMAIN"]
+    }
+  }
+}
