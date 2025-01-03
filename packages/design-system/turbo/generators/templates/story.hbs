@@ -2,9 +2,9 @@ import type { Meta } from '@storybook/react'
 
 import { {{ pascalCase name }} } from '../components/{{ kebabCase name }}.js'
 
-const meta: Meta<typeof {{ pascalCase name }}> = {
-  component: {{ pascalCase name }},
-}
+const meta: Meta<typeof {{ pascalCase name }}> = { component: {{ pascalCase name }} }
+
+export default meta
 
 type Story = StoryObj<typeof {{ pascalCase name }}>
 
@@ -16,5 +16,4 @@ const Primary: Story = {
   },
 }
 
-export default meta
 export { Primary }

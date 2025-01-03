@@ -5,8 +5,9 @@
   "private": true,
   "exports": {
     "./components/*": "./src/components/*.tsx",
+    "./fonts/*": "./src/fonts/*/font.ts",
     "./icons/*": "./src/icons/*.ts",
-    "./styles/*": "./src/styles/*.css"
+    "./styles/*": "./src/styles/*"
   },
   "scripts": {
     "generate:component": "turbo gen component",
@@ -38,6 +39,7 @@
     "cva": "1.0.0-beta.2",
     "lucide-react": "^0.469.0",
     "motion": "catalog:",
+    "next": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
   }
