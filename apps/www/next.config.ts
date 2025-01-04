@@ -13,8 +13,8 @@ const nextConfig: NextConfig = {
       destination: `${BLOG_DOMAIN}/:path+`,
     },
     {
-      source: '/blog-static/_next/:path+',
-      destination: `${BLOG_DOMAIN}/blog-static/_next/:path+`,
+      source: '/blog-static/:path*',
+      destination: `${BLOG_DOMAIN}/blog-static/:path*`,
     },
     {
       source: '/playground',
@@ -25,8 +25,8 @@ const nextConfig: NextConfig = {
       destination: `${PLAYGROUND_DOMAIN}/:path+`,
     },
     {
-      source: '/playground-static/_next/:path+',
-      destination: `${PLAYGROUND_DOMAIN}/playground-static/_next/:path+`,
+      source: '/playground-static/:path*',
+      destination: `${PLAYGROUND_DOMAIN}/playground-static/:path*`,
     },
   ],
 }
