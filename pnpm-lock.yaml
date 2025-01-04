@@ -4,39 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-catalogs:
-  default:
-    '@tailwindcss/postcss':
-      specifier: 4.0.0-beta.8
-      version: 4.0.0-beta.8
-    '@types/node':
-      specifier: ^22.10.2
-      version: 22.10.2
-    '@types/react':
-      specifier: 19.0.1
-      version: 19.0.1
-    '@types/react-dom':
-      specifier: 19.0.2
-      version: 19.0.2
-    motion:
-      specifier: ^11.15.0
-      version: 11.15.0
-    next:
-      specifier: 15.1.0
-      version: 15.1.0
-    react:
-      specifier: 19.0.0
-      version: 19.0.0
-    react-dom:
-      specifier: 19.0.0
-      version: 19.0.0
-    tailwindcss:
-      specifier: 4.0.0-beta.8
-      version: 4.0.0-beta.8
-    typescript:
-      specifier: 5.7.2
-      version: 5.7.2
-
 importers:
 
   .:
@@ -3463,6 +3430,39 @@ packages:
   yocto-queue@1.1.1:
     resolution: {integrity: sha512-b4JR1PFR10y1mKjhHY9LaGo6tmrgjit7hxVIeAmyMw3jegXR4dhYqLaQF5zMXZxY7tLpMyJeLjr1C4rLmkVe8g==}
     engines: {node: '>=12.20'}
+
+catalogs:
+  default:
+    '@tailwindcss/postcss':
+      specifier: 4.0.0-beta.8
+      version: 4.0.0-beta.8
+    '@types/node':
+      specifier: ^22.10.2
+      version: 22.10.2
+    '@types/react':
+      specifier: 19.0.1
+      version: 19.0.1
+    '@types/react-dom':
+      specifier: 19.0.2
+      version: 19.0.2
+    motion:
+      specifier: ^11.15.0
+      version: 11.15.0
+    next:
+      specifier: 15.1.0
+      version: 15.1.0
+    react:
+      specifier: 19.0.0
+      version: 19.0.0
+    react-dom:
+      specifier: 19.0.0
+      version: 19.0.0
+    tailwindcss:
+      specifier: 4.0.0-beta.8
+      version: 4.0.0-beta.8
+    typescript:
+      specifier: 5.7.2
+      version: 5.7.2
 
 snapshots:
 
