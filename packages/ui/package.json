@@ -1,5 +1,5 @@
 {
-  "name": "@package/design-system",
+  "name": "@package/ui",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -32,7 +32,8 @@
     "@types/react-dom": "catalog:",
     "storybook": "^8.4.7",
     "tailwindcss": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vite": "^6.0.7"
   },
   "dependencies": {
     "@package/utility": "workspace:*",

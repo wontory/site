@@ -1,4 +1,4 @@
-import { Button } from '@package/design-system/components/button'
+import { Button } from '@package/ui/components/button'
 
 export default function Home() {
   return (
