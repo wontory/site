@@ -10,7 +10,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@package/design-system": "workspace:*",
+    "@package/ui": "workspace:*",
     "@package/utility": "workspace:*",
     "motion": "catalog:",
     "next": "catalog:",

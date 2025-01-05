@@ -1,4 +1,4 @@
-import { dirname, join } from 'node:path'
+import { dirname, join, resolve } from 'node:path'
 import type { StorybookConfig } from '@storybook/react-vite'
 
 const getAbsolutePath = (value: string): string =>
@@ -15,6 +15,15 @@ const config: StorybookConfig = {
   framework: {
     name: getAbsolutePath('@storybook/react-vite'),
     options: {},
+  },
+  viteFinal: async (config) => {
+    const { mergeConfig } = await import('vite')
+
+    return mergeConfig(config, {
+      resolve: {
+        alias: [{ find: '~', replacement: resolve(__dirname, '../src') }],
+      },
+    })
   },
 }
 
