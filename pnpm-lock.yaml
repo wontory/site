@@ -65,6 +65,9 @@ importers:
 
   apps/blog:
     dependencies:
+      '@package/component':
+        specifier: workspace:*
+        version: link:../../packages/component
       '@package/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -108,6 +111,9 @@ importers:
 
   apps/playground:
     dependencies:
+      '@package/component':
+        specifier: workspace:*
+        version: link:../../packages/component
       '@package/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -151,6 +157,9 @@ importers:
 
   apps/www:
     dependencies:
+      '@package/component':
+        specifier: workspace:*
+        version: link:../../packages/component
       '@package/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -193,6 +202,46 @@ importers:
         version: 5.7.2
 
   configs/typescript: {}
+
+  packages/component:
+    dependencies:
+      '@package/ui':
+        specifier: workspace:*
+        version: link:../ui
+      '@package/utility':
+        specifier: workspace:*
+        version: link:../utility
+      motion:
+        specifier: 'catalog:'
+        version: 11.15.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next:
+        specifier: 'catalog:'
+        version: 15.1.3(@babel/core@7.26.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: 'catalog:'
+        version: 19.0.0
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.0.0(react@19.0.0)
+    devDependencies:
+      '@config/typescript':
+        specifier: workspace:*
+        version: link:../../configs/typescript
+      '@turbo/gen':
+        specifier: ^2.3.3
+        version: 2.3.3(@types/node@22.10.5)(typescript@5.7.2)
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.10.5
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.0.2
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.0.2(@types/react@19.0.2)
+      typescript:
+        specifier: 'catalog:'
+        version: 5.7.2
 
   packages/ui:
     dependencies:
