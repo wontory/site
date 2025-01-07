@@ -7,6 +7,7 @@
     "./components/*": "./src/components/*.tsx",
     "./fonts/*": "./src/fonts/*/font.ts",
     "./icons/*": "./src/icons/*.ts",
+    "./layouts/*": "./src/layouts/*.tsx",
     "./styles/*": "./src/styles/*"
   },
   "scripts": {
