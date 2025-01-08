@@ -20,11 +20,11 @@ function SiteHeader() {
 
 function SiteFooter() {
   return (
-    <footer className="container mx-auto flex flex-col items-center gap-4 py-4">
-      <div className="w-full rounded-2xl bg-primary px-4 py-6 text-primary-foreground">
+    <footer className="container mx-auto flex flex-col items-center gap-4 p-4">
+      <div className="w-full rounded-2xl bg-primary p-10 text-primary-foreground">
         Footer
       </div>
-      <span className="text-muted-foreground text-sm">
+      <span className="text-center text-muted-foreground text-sm">
         &copy; {new Date().getFullYear()} Wontory. All rights reserved.
       </span>
     </footer>
@@ -35,7 +35,7 @@ function BaseLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-dvh flex-col">
       <SiteHeader />
-      <main className="container mx-auto mb-12 flex flex-1 flex-col p-4">
+      <main className="container mx-auto flex flex-1 flex-col px-4 pt-6 pb-18">
         {children}
       </main>
       <SiteFooter />
