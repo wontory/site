@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next'
 
-const { BLOG_DOMAIN, PLAYGROUND_DOMAIN } = process.env
+const { BLOG_DOMAIN, CRAFT_DOMAIN } = process.env
 
 const nextConfig: NextConfig = {
   rewrites: async () => [
@@ -17,16 +17,16 @@ const nextConfig: NextConfig = {
       destination: `${BLOG_DOMAIN}/blog-static/:path*`,
     },
     {
-      source: '/playground',
-      destination: `${PLAYGROUND_DOMAIN}`,
+      source: '/craft',
+      destination: `${CRAFT_DOMAIN}`,
     },
     {
-      source: '/playground/:path+',
-      destination: `${PLAYGROUND_DOMAIN}/:path+`,
+      source: '/craft/:path+',
+      destination: `${CRAFT_DOMAIN}/:path+`,
     },
     {
-      source: '/playground-static/:path*',
-      destination: `${PLAYGROUND_DOMAIN}/playground-static/:path*`,
+      source: '/craft-static/:path*',
+      destination: `${CRAFT_DOMAIN}/craft-static/:path*`,
     },
   ],
 }

@@ -109,7 +109,7 @@ importers:
         specifier: 'catalog:'
         version: 5.7.2
 
-  apps/playground:
+  apps/craft:
     dependencies:
       '@package/component':
         specifier: workspace:*
