@@ -9,7 +9,7 @@ function SiteHeader() {
     <header className="container sticky top-0 mx-auto flex justify-center px-4 pt-6">
       <nav className="flex rounded-xl border bg-background shadow">
         {HEADER_NAV_LINKS.map(({ href, label }) => (
-          <a href={href} key={href} className="px-4 py-2">
+          <a href={href} key={href} className="px-4 py-2 font-medium text-sm">
             {label}
           </a>
         ))}
