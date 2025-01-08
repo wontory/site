@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="ko" className={pretendard.variable}>
       <body>
         <BaseLayout>{children}</BaseLayout>
-        <PrefetchCrossZoneLinks hrefs={['/', '/playground']} />
+        <PrefetchCrossZoneLinks hrefs={['/', '/craft']} />
       </body>
     </html>
   )
