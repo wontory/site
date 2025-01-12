@@ -40,3 +40,7 @@ next-env.d.ts
 
 # Storybook
 *storybook.log
+
+# Velite
+.velite
+public/static
