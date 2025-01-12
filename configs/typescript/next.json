@@ -3,6 +3,7 @@
   "extends": "./base.json",
   "compilerOptions": {
     "declaration": false,
+    "declarationMap": false,
     "plugins": [{ "name": "next" }],
     "module": "ESNext",
     "moduleResolution": "Bundler",
