@@ -4,7 +4,8 @@
     "plugins": [{ "name": "next" }],
     "paths": {
       "#/*": ["./app/*"],
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "#site/content": ["./velite"]
     }
   },
   "include": [
