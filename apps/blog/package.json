@@ -10,13 +10,16 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@expressive-code/plugin-collapsible-sections": "^0.40.0",
+    "@expressive-code/plugin-line-numbers": "^0.40.0",
     "@package/component": "workspace:*",
     "@package/ui": "workspace:*",
     "@package/utility": "workspace:*",
     "motion": "catalog:",
     "next": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "rehype-expressive-code": "^0.40.0"
   },
   "devDependencies": {
     "@config/typescript": "workspace:*",
