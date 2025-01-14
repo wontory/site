@@ -5,6 +5,7 @@
   "private": true,
   "imports": {
     "#app/*": ["./app/*", "./app/*.ts", "./app/*.tsx"],
+    "#site/content": "./.velite",
     "#*": ["./src/*", "./src/*.ts", "./src/*.tsx"]
   },
   "scripts": {
