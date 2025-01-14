@@ -49,6 +49,7 @@ const post = defineCollection({
       description: s.string().max(999).optional(),
       date: s.isodate(),
       draft: s.boolean().default(false),
+      cover: s.image().optional(),
       content: s.mdx(),
       toc: s.toc(),
     })
