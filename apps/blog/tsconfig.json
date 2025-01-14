@@ -2,11 +2,7 @@
   "extends": "@config/typescript/next.json",
   "compilerOptions": {
     "plugins": [{ "name": "next" }],
-    "paths": {
-      "#/*": ["./app/*"],
-      "~/*": ["./src/*"],
-      "#site/content": ["./.velite"]
-    }
+    "rootDir": "."
   },
   "include": [
     "next-env.d.ts",

@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "type": "module",
   "private": true,
+  "imports": {
+    "#app/*": ["./app/*", "./app/*.ts", "./app/*.tsx"],
+    "#*": ["./src/*", "./src/*.ts", "./src/*.tsx"]
+  },
   "scripts": {
     "dev": "next dev --turbopack -p 3000",
     "build": "next build",

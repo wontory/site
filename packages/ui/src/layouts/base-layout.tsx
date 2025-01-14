@@ -1,4 +1,4 @@
-import { SiteFooter, SiteHeader } from './base-layout.client'
+import { SiteFooter, SiteHeader } from '#layouts/base-layout.client'
 
 interface BaseLayoutProps {
   path: string

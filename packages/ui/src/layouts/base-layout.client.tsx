@@ -5,7 +5,7 @@ import { motion } from 'motion/react'
 import Link from 'next/link'
 import { useState } from 'react'
 
-import { buttonVariants } from '../components/button'
+import { buttonVariants } from '#components/button'
 
 const HEADER_NAV_LINKS = [
   { href: '/', label: 'Home' },
