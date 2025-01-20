@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
-import { PrefetchCrossZoneLinks } from '@package/component/prefetch-cross-zone-links'
 import { pretendard } from '@package/ui/fonts/pretendard'
 import { BaseLayout } from '@package/ui/layouts/base-layout'
+import { PrefetchCrossZoneLinks } from '@package/ui/scripts/prefetch-cross-zone-links'
 
 import '@package/ui/styles/globals.css'
 
