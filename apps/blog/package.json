@@ -20,6 +20,7 @@
     "@giscus/react": "^3.1.0",
     "@package/ui": "workspace:*",
     "@package/utility": "workspace:*",
+    "date-fns": "catalog:",
     "motion": "catalog:",
     "next": "catalog:",
     "react": "catalog:",
