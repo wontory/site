@@ -11,6 +11,7 @@
     "./fonts/*": "./src/fonts/*/font.ts",
     "./icons/*": "./src/icons/*.ts",
     "./layouts/*": "./src/layouts/*.tsx",
+    "./scripts/*": "./src/scripts/*.tsx",
     "./styles/*": "./src/styles/*"
   },
   "scripts": {
