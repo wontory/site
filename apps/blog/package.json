@@ -20,6 +20,7 @@
     "@giscus/react": "^3.1.0",
     "@package/ui": "workspace:*",
     "@package/utility": "workspace:*",
+    "@tanstack/react-virtual": "^3.11.2",
     "date-fns": "catalog:",
     "motion": "catalog:",
     "next": "catalog:",
