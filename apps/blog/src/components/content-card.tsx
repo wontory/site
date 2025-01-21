@@ -10,9 +10,9 @@ import {
 } from '@package/ui/components/card'
 import { ClockIcon } from '@package/ui/icons/lucide'
 
-import type { Post } from '#site/content'
+import type { Memo, Post } from '#site/content'
 
-function PostCard({ content }: { content: Post }) {
+function ContentCard({ content }: { content: Memo | Post }) {
   return (
     <Card className="transition-colors hover:bg-primary/5">
       <CardHeader className="p-4">
@@ -36,4 +36,4 @@ function PostCard({ content }: { content: Post }) {
   )
 }
 
-export { PostCard }
+export { ContentCard }
