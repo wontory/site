@@ -34,7 +34,7 @@
     "storybook": "^8.4.7",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
-    "vite": "^6.0.7"
+    "vite": "^6.0.9"
   },
   "dependencies": {
     "@package/utility": "workspace:*",
