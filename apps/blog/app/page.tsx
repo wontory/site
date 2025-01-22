@@ -1,8 +1,24 @@
 import { ContentList } from '#components/content-list'
-import { post } from '#site/content'
+import { memo, post } from '#site/content'
 
-export default function Home() {
-  const contents = post.sort(
+const getContents = (filter?: string) => {
+  switch (filter) {
+    case 'memo':
+      return memo
+    case 'post':
+      return post
+    default:
+      return [...memo, ...post]
+  }
+}
+
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string }>
+}) {
+  const filter = (await searchParams).filter
+  const contents = getContents(filter).sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   )
 
