@@ -1,3 +1,5 @@
+import { PageHeader } from '@package/ui/components/page-header'
+
 import { ContentList } from '#components/content-list'
 import { memo, post } from '#site/content'
 
@@ -22,5 +24,13 @@ export default async function Home({
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   )
 
-  return <ContentList contents={contents} />
+  return (
+    <>
+      <PageHeader
+        title="Blog"
+        description="My precious thoughts and inspirations."
+      />
+      <ContentList contents={contents} />
+    </>
+  )
 }
