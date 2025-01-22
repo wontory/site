@@ -1,0 +1,52 @@
+{
+  "name": "@package/ui",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "imports": {
+    "#*": ["./src/*", "./src/*.ts", "./src/*.tsx"]
+  },
+  "exports": {
+    "./components/*": "./src/components/*.tsx",
+    "./fonts/*": "./src/fonts/*/font.ts",
+    "./icons/*": "./src/icons/*.ts",
+    "./layouts/*": "./src/layouts/*.tsx",
+    "./scripts/*": "./src/scripts/*.tsx",
+    "./styles/*": "./src/styles/*"
+  },
+  "scripts": {
+    "generate:component": "turbo gen component",
+    "check-types": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.4",
+    "@config/typescript": "workspace:*",
+    "@storybook/addon-essentials": "^8.5.0",
+    "@storybook/addon-interactions": "^8.5.0",
+    "@storybook/addon-onboarding": "^8.5.0",
+    "@storybook/blocks": "^8.5.0",
+    "@storybook/react": "^8.5.0",
+    "@storybook/react-vite": "^8.5.0",
+    "@storybook/test": "^8.5.0",
+    "@tailwindcss/postcss": "catalog:",
+    "@turbo/gen": "^2.3.3",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "storybook": "^8.5.0",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:",
+    "vite": "^6.0.11"
+  },
+  "dependencies": {
+    "@package/utility": "workspace:*",
+    "cva": "1.0.0-beta.2",
+    "lucide-react": "^0.473.0",
+    "motion": "catalog:",
+    "next": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  }
+}

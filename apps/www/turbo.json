@@ -2,7 +2,7 @@
   "extends": ["//"],
   "tasks": {
     "build": {
-      "env": ["BLOG_DOMAIN", "PLAYGROUND_DOMAIN"]
+      "env": ["BLOG_DOMAIN", "CRAFT_DOMAIN"]
     }
   }
 }
