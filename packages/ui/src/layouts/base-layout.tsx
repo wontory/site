@@ -9,7 +9,7 @@ function BaseLayout({ path, children }: BaseLayoutProps) {
   return (
     <div className="flex min-h-dvh flex-col">
       <SiteHeader path={path} />
-      <main className="container mx-auto flex flex-1 flex-col px-4 pt-6 pb-18">
+      <main className="container mx-auto flex flex-1 flex-col gap-8 px-4 pt-6 pb-18">
         {children}
       </main>
       <SiteFooter path={path} />
