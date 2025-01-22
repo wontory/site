@@ -111,6 +111,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: 'catalog:'
         version: 4.0.0-beta.9
+      '@types/mdx':
+        specifier: ^2.0.13
+        version: 2.0.13
       '@types/node':
         specifier: 'catalog:'
         version: 22.10.7

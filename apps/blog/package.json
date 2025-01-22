@@ -31,6 +31,7 @@
   "devDependencies": {
     "@config/typescript": "workspace:*",
     "@tailwindcss/postcss": "catalog:",
+    "@types/mdx": "^2.0.13",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
