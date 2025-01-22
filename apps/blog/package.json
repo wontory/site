@@ -6,7 +6,7 @@
   "imports": {
     "#app/*": ["./app/*", "./app/*.ts", "./app/*.tsx"],
     "#site/content": "./.velite/index.js",
-    "#*": ["./src/*", "./src/*.ts", "./src/*.tsx"]
+    "#*": ["./src/*", "./src/*.ts", "./src/*.tsx", "./src/*.css"]
   },
   "scripts": {
     "dev": "next dev --turbopack -p 3001",
@@ -31,6 +31,7 @@
   "devDependencies": {
     "@config/typescript": "workspace:*",
     "@tailwindcss/postcss": "catalog:",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/mdx": "^2.0.13",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
