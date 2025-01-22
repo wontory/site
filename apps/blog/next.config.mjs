@@ -1,3 +1,5 @@
+const { BLOG_DOMAIN } = process.env
+
 const isDev = process.argv.indexOf('dev') !== -1
 const isBuild = process.argv.indexOf('build') !== -1
 if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
@@ -9,6 +11,9 @@ if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   assetPrefix: '/blog-static',
+  images: {
+    path: `${BLOG_DOMAIN}/_next/image`,
+  },
 }
 
 export default nextConfig
