@@ -4,7 +4,7 @@ import { pretendard } from '@package/ui/fonts/pretendard'
 import { BaseLayout } from '@package/ui/layouts/base-layout'
 import { PrefetchCrossZoneLinks } from '@package/ui/scripts/prefetch-cross-zone-links'
 
-import '@package/ui/styles/globals.css'
+import '#styles/globals.css'
 
 export const metadata: Metadata = {
   title: 'Blog | Wontory',
