@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "type": "module",
   "private": true,
+  "imports": {
+    "#app/*": ["./app/*", "./app/*.ts", "./app/*.tsx"],
+    "#site/content": "./.velite/index.js",
+    "#*": ["./src/*", "./src/*.ts", "./src/*.tsx", "./src/*.css"]
+  },
   "scripts": {
     "dev": "next dev --turbopack -p 3001",
     "build": "next build",
@@ -10,21 +15,29 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@package/component": "workspace:*",
+    "@expressive-code/plugin-collapsible-sections": "^0.40.1",
+    "@expressive-code/plugin-line-numbers": "^0.40.1",
+    "@giscus/react": "^3.1.0",
     "@package/ui": "workspace:*",
     "@package/utility": "workspace:*",
+    "@tanstack/react-virtual": "^3.11.2",
+    "date-fns": "catalog:",
     "motion": "catalog:",
     "next": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "rehype-expressive-code": "^0.40.1"
   },
   "devDependencies": {
     "@config/typescript": "workspace:*",
     "@tailwindcss/postcss": "catalog:",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/mdx": "^2.0.13",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "tailwindcss": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "velite": "^0.2.2"
   }
 }

@@ -5,7 +5,7 @@ import { motion } from 'motion/react'
 import Link from 'next/link'
 import { useState } from 'react'
 
-import { buttonVariants } from '../components/button'
+import { buttonVariants } from '#components/button'
 
 const HEADER_NAV_LINKS = [
   { href: '/', label: 'Home' },
@@ -35,7 +35,7 @@ function SiteHeader({ path }: { path: string }) {
   const [activePath, setActivePath] = useState<string>(path)
 
   return (
-    <header className="container sticky top-0 mx-auto flex justify-center px-4 pt-6">
+    <header className="container sticky top-0 z-50 mx-auto flex justify-center px-4 pt-6">
       <nav className="flex rounded-2xl border bg-background p-1 shadow">
         {HEADER_NAV_LINKS.map(({ href, label }) => (
           <DynamicLink

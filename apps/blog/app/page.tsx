@@ -1,10 +1,36 @@
-import { Button } from '@package/ui/components/button'
+import { PageHeader } from '@package/ui/components/page-header'
 
-export default function Home() {
+import { ContentList } from '#components/content-list'
+import { memo, post } from '#site/content'
+
+const getContents = (filter?: string) => {
+  switch (filter) {
+    case 'memo':
+      return memo
+    case 'post':
+      return post
+    default:
+      return [...memo, ...post]
+  }
+}
+
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string }>
+}) {
+  const filter = (await searchParams).filter
+  const contents = getContents(filter).sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  )
+
   return (
     <>
-      <div className="font-bold text-3xl underline">Hello blog!</div>
-      <Button>Button</Button>
+      <PageHeader
+        title="Blog"
+        description="My precious thoughts and inspirations."
+      />
+      <ContentList contents={contents} />
     </>
   )
 }

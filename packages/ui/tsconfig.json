@@ -1,11 +1,9 @@
 {
   "extends": "@config/typescript/next.json",
   "compilerOptions": {
+    "rootDir": ".",
     "outDir": "dist",
-    "jsx": "react-jsx",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
+    "jsx": "react-jsx"
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
