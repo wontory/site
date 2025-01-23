@@ -1,5 +1,6 @@
 import { PageHeader } from '@package/ui/components/page-header'
 
+import { ContentFilter } from '#app/page.client'
 import { ContentList } from '#components/content-list'
 import { memo, post } from '#site/content'
 
@@ -30,6 +31,7 @@ export default async function Home({
         title="Blog"
         description="My precious thoughts and inspirations."
       />
+      <ContentFilter filter={filter} />
       <ContentList contents={contents} />
     </>
   )
