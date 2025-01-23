@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 import {
   Select,
@@ -13,10 +13,11 @@ import { FilterIcon } from '@package/ui/icons/lucide'
 
 function ContentFilter({ filter }: { filter: string | undefined }) {
   const router = useRouter()
+  const pathname = usePathname()
 
   const handleValueChange = (value: string) => {
-    if (value === 'all') router.replace('/blog')
-    else router.replace(`/blog?filter=${value}`)
+    if (value === 'all') router.replace(pathname)
+    else router.replace(`${pathname}?filter=${value}`)
   }
 
   return (
