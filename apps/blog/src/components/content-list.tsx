@@ -2,20 +2,28 @@
 
 import { useWindowVirtualizer } from '@tanstack/react-virtual'
 import Link from 'next/link'
+import useMeasure from 'react-use-measure'
 
 import { ContentCard } from '#components/content-card'
 import type { Memo, Post } from '#site/content'
 
-const LANES = 3 as const
-const GAP = 16 as const
+const getLanes = (width: number) => {
+  if (width <= 640) return 1
+  if (width <= 1024) return 2
+  return 3
+}
 
 function ContentList({ contents }: { contents: (Memo | Post)[] }) {
+  const [ref, bounds] = useMeasure()
+  const gap = 16 as const
+  const lanes = getLanes(bounds.width)
+
   const windowVirtualizer = useWindowVirtualizer({
     count: contents.length,
     estimateSize: () => 300,
     overscan: 6,
-    gap: GAP,
-    lanes: LANES,
+    gap: gap,
+    lanes: lanes,
   })
 
   const renderList = () =>
@@ -30,8 +38,8 @@ function ContentList({ contents }: { contents: (Memo | Post)[] }) {
           href={`blog/${content.slug}`}
           className="absolute top-0 will-change-transform"
           style={{
-            left: `calc(${virtualRow.lane} * (100% / ${LANES}) + ${virtualRow.lane} * ${GAP / LANES}px)`,
-            width: `calc(100% / ${LANES} - ${((LANES - 1) * GAP) / LANES}px)`,
+            left: `calc(${virtualRow.lane} * (100% / ${lanes}) + ${virtualRow.lane} * ${gap / lanes}px)`,
+            width: `calc(100% / ${lanes} - ${((lanes - 1) * gap) / lanes}px)`,
             transform: `translateY(${virtualRow.start}px)`,
           }}
         >
@@ -42,6 +50,7 @@ function ContentList({ contents }: { contents: (Memo | Post)[] }) {
 
   return (
     <div
+      ref={ref}
       className="relative"
       style={{
         height: `${windowVirtualizer.getTotalSize()}px`,
