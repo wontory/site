@@ -26,6 +26,7 @@
     "next": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
+    "react-use-measure": "^2.1.1",
     "rehype-expressive-code": "^0.40.1"
   },
   "devDependencies": {
