@@ -112,7 +112,7 @@ function SiteFooter({ path }: { path: string }) {
             </div>
           </div>
           <div className="flex items-center lg:col-span-2">
-            <div>
+            <div className="w-full">
               <h4 className="font-bold">Stay in touch</h4>
               <span className="text-primary-foreground/50 text-sm">
                 Don't miss out. Get an email whenever I post, no spam.
