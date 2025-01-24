@@ -1,8 +1,7 @@
 'use client'
 
-import { useVirtualizer } from '@tanstack/react-virtual'
+import { useWindowVirtualizer } from '@tanstack/react-virtual'
 import Link from 'next/link'
-import { useRef } from 'react'
 
 import { ContentCard } from '#components/content-card'
 import type { Memo, Post } from '#site/content'
@@ -11,11 +10,8 @@ const LANES = 3 as const
 const GAP = 16 as const
 
 function ContentList({ contents }: { contents: (Memo | Post)[] }) {
-  const parentRef = useRef<HTMLDivElement>(null)
-
-  const rowVirtualizer = useVirtualizer({
+  const windowVirtualizer = useWindowVirtualizer({
     count: contents.length,
-    getScrollElement: () => parentRef.current,
     estimateSize: () => 300,
     overscan: 5,
     gap: GAP,
@@ -23,13 +19,13 @@ function ContentList({ contents }: { contents: (Memo | Post)[] }) {
   })
 
   const renderList = () =>
-    rowVirtualizer.getVirtualItems().map((virtualRow) => {
+    windowVirtualizer.getVirtualItems().map((virtualRow) => {
       const content = contents[virtualRow.index]
       if (!content) return null
       return (
         <Link
           key={virtualRow.key}
-          ref={rowVirtualizer.measureElement}
+          ref={windowVirtualizer.measureElement}
           data-index={virtualRow.index}
           href={`blog/${content.slug}`}
           className="absolute top-0 will-change-transform"
@@ -45,15 +41,13 @@ function ContentList({ contents }: { contents: (Memo | Post)[] }) {
     })
 
   return (
-    <div ref={parentRef}>
-      <div
-        className="relative"
-        style={{
-          height: `${rowVirtualizer.getTotalSize()}px`,
-        }}
-      >
-        {renderList()}
-      </div>
+    <div
+      className="relative"
+      style={{
+        height: `${windowVirtualizer.getTotalSize()}px`,
+      }}
+    >
+      {renderList()}
     </div>
   )
 }
