@@ -13,7 +13,7 @@ function ContentList({ contents }: { contents: (Memo | Post)[] }) {
   const windowVirtualizer = useWindowVirtualizer({
     count: contents.length,
     estimateSize: () => 300,
-    overscan: 5,
+    overscan: 6,
     gap: GAP,
     lanes: LANES,
   })
