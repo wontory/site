@@ -1,36 +1,22 @@
+import { Provider } from 'jotai'
+
 import { PageHeader } from '@package/ui/components/page-header'
 
+import { ContentFilter } from '#components/content-filter'
 import { ContentList } from '#components/content-list'
-import { memo, post } from '#site/content'
+import { filterStore } from '#stores/filter-store'
 
-const getContents = (filter?: string) => {
-  switch (filter) {
-    case 'memo':
-      return memo
-    case 'post':
-      return post
-    default:
-      return [...memo, ...post]
-  }
-}
-
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string }>
-}) {
-  const filter = (await searchParams).filter
-  const contents = getContents(filter).sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-  )
-
+export default async function Home() {
   return (
     <>
       <PageHeader
         title="Blog"
         description="My precious thoughts and inspirations."
       />
-      <ContentList contents={contents} />
+      <Provider store={filterStore}>
+        <ContentFilter />
+        <ContentList />
+      </Provider>
     </>
   )
 }
