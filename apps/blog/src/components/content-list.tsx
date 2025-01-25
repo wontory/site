@@ -1,12 +1,24 @@
 'use client'
 
 import { useWindowVirtualizer } from '@tanstack/react-virtual'
+import { useAtomValue } from 'jotai'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import useMeasure from 'react-use-measure'
 
 import { ContentCard } from '#components/content-card'
-import type { Memo, Post } from '#site/content'
+import { memo, post } from '#site/content'
+import { type Filter, filterAtom } from '#stores/filter-store'
+
+const getContents = (filter: Filter) => {
+  switch (filter) {
+    case 'memo':
+      return memo
+    case 'post':
+      return post
+    default:
+      return [...memo, ...post]
+  }
+}
 
 const getLanes = (width: number) => {
   if (width <= 640) return 1
@@ -14,12 +26,16 @@ const getLanes = (width: number) => {
   return 3
 }
 
-function ContentList({ contents }: { contents: (Memo | Post)[] }) {
+function ContentList() {
+  const filter = useAtomValue(filterAtom)
+  const contents = getContents(filter).sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  )
+
   const [ref, bounds] = useMeasure()
   const gap = 16 as const
   const lanes = getLanes(bounds.width)
 
-  const pathname = usePathname()
   const windowVirtualizer = useWindowVirtualizer({
     count: contents.length,
     estimateSize: () => 300,
