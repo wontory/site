@@ -22,6 +22,7 @@
     "@package/utility": "workspace:*",
     "@tanstack/react-virtual": "^3.11.2",
     "date-fns": "catalog:",
+    "jotai": "^2.11.1",
     "motion": "catalog:",
     "next": "catalog:",
     "react": "catalog:",
