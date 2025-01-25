@@ -2,6 +2,7 @@
 
 import { useWindowVirtualizer } from '@tanstack/react-virtual'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import useMeasure from 'react-use-measure'
 
 import { ContentCard } from '#components/content-card'
@@ -18,6 +19,7 @@ function ContentList({ contents }: { contents: (Memo | Post)[] }) {
   const gap = 16 as const
   const lanes = getLanes(bounds.width)
 
+  const pathname = usePathname()
   const windowVirtualizer = useWindowVirtualizer({
     count: contents.length,
     estimateSize: () => 300,
@@ -35,7 +37,7 @@ function ContentList({ contents }: { contents: (Memo | Post)[] }) {
           key={virtualRow.key}
           ref={windowVirtualizer.measureElement}
           data-index={virtualRow.index}
-          href={`blog/${content.slug}`}
+          href={`${pathname.slice(1)}/${content.slug}`}
           className="absolute top-0 will-change-transform"
           style={{
             left: `calc(${virtualRow.lane} * (100% / ${lanes}) + ${virtualRow.lane} * ${gap / lanes}px)`,
