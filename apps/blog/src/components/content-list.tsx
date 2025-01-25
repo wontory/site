@@ -35,7 +35,7 @@ function ContentList({ contents }: { contents: (Memo | Post)[] }) {
           key={virtualRow.key}
           ref={windowVirtualizer.measureElement}
           data-index={virtualRow.index}
-          href={`blog/${content.slug}`}
+          href={`/blog/${content.slug}`}
           className="absolute top-0 will-change-transform"
           style={{
             left: `calc(${virtualRow.lane} * (100% / ${lanes}) + ${virtualRow.lane} * ${gap / lanes}px)`,
