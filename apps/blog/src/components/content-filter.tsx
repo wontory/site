@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { useAtom } from 'jotai'
 
 import {
   Select,
@@ -11,17 +11,18 @@ import {
 } from '@package/ui/components/select'
 import { FilterIcon } from '@package/ui/icons/lucide'
 
-function ContentFilter({ filter }: { filter: string | undefined }) {
-  const router = useRouter()
+import { type SelectedFilter, filterAtom } from '#stores/filter-store'
 
-  const handleValueChange = (value: string) => {
-    if (value === 'all') router.replace('/blog')
-    else router.replace(`/blog?filter=${value}`)
+function ContentFilter() {
+  const [filter, setFilter] = useAtom(filterAtom)
+
+  const handleValueChange = (value: SelectedFilter) => {
+    setFilter(value)
   }
 
   return (
-    <Select defaultValue={filter} onValueChange={handleValueChange}>
-      <SelectTrigger className="w-40">
+    <Select onValueChange={handleValueChange}>
+      <SelectTrigger defaultValue={filter} className="w-40">
         <FilterIcon className="size-4" />
         <SelectValue placeholder="Filter" />
       </SelectTrigger>

@@ -1,41 +1,63 @@
 'use client'
 
-import { useVirtualizer } from '@tanstack/react-virtual'
+import { useWindowVirtualizer } from '@tanstack/react-virtual'
+import { useAtomValue } from 'jotai'
 import Link from 'next/link'
-import { useRef } from 'react'
+import useMeasure from 'react-use-measure'
 
 import { ContentCard } from '#components/content-card'
-import type { Memo, Post } from '#site/content'
+import { memo, post } from '#site/content'
+import { type Filter, filterAtom } from '#stores/filter-store'
 
-const LANES = 3 as const
-const GAP = 16 as const
+const getContents = (filter: Filter) => {
+  switch (filter) {
+    case 'memo':
+      return memo
+    case 'post':
+      return post
+    default:
+      return [...memo, ...post]
+  }
+}
 
-function ContentList({ contents }: { contents: (Memo | Post)[] }) {
-  const parentRef = useRef<HTMLDivElement>(null)
+const getLanes = (width: number) => {
+  if (width <= 640) return 1
+  if (width <= 1024) return 2
+  return 3
+}
 
-  const rowVirtualizer = useVirtualizer({
+function ContentList() {
+  const filter = useAtomValue(filterAtom)
+  const contents = getContents(filter).sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  )
+
+  const [ref, bounds] = useMeasure()
+  const gap = 16 as const
+  const lanes = getLanes(bounds.width)
+
+  const windowVirtualizer = useWindowVirtualizer({
     count: contents.length,
-    getScrollElement: () => parentRef.current,
     estimateSize: () => 300,
-    overscan: 5,
-    gap: GAP,
-    lanes: LANES,
+    overscan: 6,
+    gap: gap,
+    lanes: lanes,
   })
 
   const renderList = () =>
-    rowVirtualizer.getVirtualItems().map((virtualRow) => {
+    windowVirtualizer.getVirtualItems().map((virtualRow) => {
       const content = contents[virtualRow.index]
       if (!content) return null
       return (
         <Link
           key={virtualRow.key}
-          ref={rowVirtualizer.measureElement}
+          ref={windowVirtualizer.measureElement}
           data-index={virtualRow.index}
-          href={`blog/${content.slug}`}
+          href={`/blog/${content.slug}`}
           className="absolute top-0 will-change-transform"
           style={{
-            left: `calc(${virtualRow.lane} * (100% / ${LANES}) + ${virtualRow.lane} * ${GAP / LANES}px)`,
-            width: `calc(100% / ${LANES} - ${((LANES - 1) * GAP) / LANES}px)`,
+            left: `calc(${virtualRow.lane} * (100% / ${lanes}) + ${virtualRow.lane} * ${gap / lanes}px)`,
+            width: `calc(100% / ${lanes} - ${((lanes - 1) * gap) / lanes}px)`,
             transform: `translateY(${virtualRow.start}px)`,
           }}
         >
@@ -45,15 +67,14 @@ function ContentList({ contents }: { contents: (Memo | Post)[] }) {
     })
 
   return (
-    <div ref={parentRef}>
-      <div
-        className="relative"
-        style={{
-          height: `${rowVirtualizer.getTotalSize()}px`,
-        }}
-      >
-        {renderList()}
-      </div>
+    <div
+      ref={ref}
+      className="relative"
+      style={{
+        height: `${windowVirtualizer.getTotalSize()}px`,
+      }}
+    >
+      {renderList()}
     </div>
   )
 }
