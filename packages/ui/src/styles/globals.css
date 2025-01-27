@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @source '../../../../packages/ui/**/*.{ts,tsx}';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     --border: 240 5.9% 90%;
@@ -59,7 +61,7 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased bg-background text-foreground transition-all;
   }
 }
 
