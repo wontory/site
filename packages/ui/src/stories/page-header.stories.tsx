@@ -12,6 +12,7 @@ const Primary: Story = {
   args: {
     title: 'Title',
     description: 'Description',
+    children: 'Children',
   },
 }
 
