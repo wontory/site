@@ -2,15 +2,9 @@ import type { MDXComponents } from 'mdx/types'
 import Image from 'next/image'
 import * as runtime from 'react/jsx-runtime'
 
-import { cn } from '@package/utility/cn'
-
 const sharedComponents: MDXComponents = {
-  img: ({ className, alt, ...props }) => (
-    <Image
-      className={cn('mx-auto rounded-md border', className)}
-      alt={alt}
-      {...props}
-    />
+  img: ({ className, ...props }) => (
+    <Image className="mx-auto rounded-md border" draggable={false} {...props} />
   ),
 }
 

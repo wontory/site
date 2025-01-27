@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { PageHeader } from '@package/ui/components/page-header'
 import { CalendarIcon, ClockIcon } from '@package/ui/icons/lucide'
 
+import { GiscusComment } from '#components/giscus-comment'
 import { MDXContent } from '#components/mdx-content'
 import { memo, post } from '#site/content'
 
@@ -51,9 +52,12 @@ export default async function Content({
           </span>
         </div>
       </PageHeader>
-      <article className="prose dark:prose-invert mx-auto mt-8 w-full max-w-screen-md">
+      <article className="prose dark:prose-invert mx-auto my-8 w-full max-w-screen-md">
         <MDXContent code={content.content} />
       </article>
+      <section className="mx-auto w-full max-w-screen-md">
+        <GiscusComment />
+      </section>
     </>
   )
 }
