@@ -1,0 +1,103 @@
+---
+title: "블로그 마이그레이션"
+description: "블로그를 이전하면서 새롭게 도입한 기술들과 트러블 슈팅에 대한 메모"
+date: "2025-01-27"
+---
+
+## 1. Next.js Multi-zones를 활용한 마이크로 프론트엔드
+
+- blog
+  - 블로그 포스팅과 짧은 메모들을 남길 공간입니다.
+- craft
+  - 레퍼런스를 참고로 만든 것들이나 컴포넌트 등을 전시할 공작소입니다.
+- www
+  - blog, craft 및 이후에 추가될 zones를 통합하는 공간입니다.
+
+Multi-zones를 도입하면서 www에서 잘 통합되지 않았던 이슈가 있었습니다.
+www에서 craft나 blog로 static files를 요청할 때,
+환경변수로 지정한 blog, craft 경로의 마지막 슬래시(`/`)가 중복되어 Permanent redirect가 계속 발생하는 문제였어요.
+(static files에 대한 요청이 잘 처리되지 않아 CSS 등이 깨지는 현상)
+환경변수에서 trailing slash를 제거하여 해결할 수 있었습니다.
+
+구현에 대해서는 Next.js의 [microfrontends](https://vercel.com/templates/next.js/microfrontends) 예제를 참고했습니다.
+
+## 2. Jotai (with Turbopack)
+
+이 프로젝트에서는 터보팩을 사용하고 있습니다. Jotai가 터보팩과 잘 호환되지 않는 문제가 있었는데(cjs 관련), Next.js 15.1.4 버전에서 이 문제가 해결되어 버전을 올려주었습니다.
+
+[Turbopack does not handle CommonJS modules properly when "type": "commonjs" is specified in package.json #74062](https://github.com/vercel/next.js/issues/74062)
+
+## 3. Tailwind CSS V4 도입
+
+Beta 버전으로 처음 도입을 시작해서, 현재는 정식 릴리즈된 버전을 사용하고 있습니다.
+Config를 스크립트 파일이 아닌, CSS에서 한다는 점이 더욱 CSS다운 느낌을 주어 좋았습니다.
+
+Tailwind CSS V4는 Tailwind class가 사용된 파일을 자동으로 감지하기 때문에, 이전 버전인 V3에서처럼 `content`를 정의할 필요가 없습니다.
+하지만, 모노레포 환경의 JIT 패키지(`ui`)에서 불러온 컴포넌트에 대한 클래스는 감지하지 못했는데,
+V4에서 새롭게 추가된 `@source`를 css 파일에 추가하여 `ui` 패키지의 Tailwind class를 감지하도록 수정했습니다.
+블로그에서는 `@tailwindcss/typography` 플러그인을 사용하기 위해 `@plugin`을 추가했습니다.
+
+## 4. Lefthook을 이용한 Git Hooks 관리
+
+이전에는 `Husky`를 사용했었는데, staged된 파일들만을 따로 다루는 것이 불가능하여 `lint-staged` 등을 추가로 설치하는 번거로움이 있었습니다.
+이번 프로젝트에서는 `Lefthook`을 사용해 Git Hooks를 관리했고, 별도 라이브러리 없이 staged된 파일들만 lint 등을 수행하도록 수정했습니다.
+`Lefthook`은 Go 언어로 작성되어 기존 `Husky` + `lintstaged` 조합 대비 더욱 빠른 속도로 처리하는 것도 만족스러웠습니다.
+
+## 5. Velite를 이용한 컨텐츠 관리
+
+이전 블로그에서도 사용하고 있었지만, 따로 글을 작성하진 않았기에 이번 메모에 작성합니다.
+`zod`를 통한 스키마 관리, 에셋 처리 등 컨텐츠 관리에 있어서 만족도가 매우 높은 라이브러리입니다.
+`Velite`가 글 목록에서의 이미지 blurDataUrl, 그 외의 메타데이터 등을 제공하기 때문에 이를 활용하여 완성도를 더 높일 수 있었습니다.
+
+다만, 컨텐츠 내부에서 사용된 이미지는 따로 메타데이터를 생성하지 않습니다.
+이로 인해 커버 이미지를 제외한 나머지 이미지들은 CLS(Cumulative Layout Shift)나 블러 처리 등이 안되고 있는 문제가 있습니다.
+따로 이미지를 처리하고, custom loader를 제작해서 메타데이터를 가져올 수 있지만, `Velite` 이슈 중에 컨텐츠 내부 에셋에 대한 메타데이터 지원이 예정되어 있다는 답변이 있어서 이를 기다리고 있습니다.
+([Velite #98 Comment](https://github.com/zce/velite/issues/98#issuecomment-2031702145))
+
+## 6. @tanstack/virtual로 목록 가상화와 Masonry 레이아웃 구현
+
+블로그에서 게시글 목록에 `windowVirtualizer`를 이용한 목록 가상화와 Masonry 레이아웃을 적용해 놓았습니다.
+Masonry 레이아웃은 핀터레스트 UI로도 유명한데, 전부터 블로그 게시글 목록에 꼭 도입하고 싶었던 레이아웃입니다.
+`@tanstack/virtual`의 Masonry 레이아웃 예제를 참고했는데, Virtualizer에 `gap`을 넣어줘도 세로 `gap`만 추가되는 문제가 있어서 `left` 속성을 `gap`과 `lane`을 이용해 재계산하여 배치하도록 수정해주었습니다.
+
+```tsx title="content-list.tsx"
+const windowVirtualizer = useWindowVirtualizer({
+  count: contents.length,
+  estimateSize: () => 300,
+  overscan: 6,
+  gap: gap,
+  lanes: lanes,
+});
+
+const renderList = () =>
+  windowVirtualizer.getVirtualItems().map((virtualRow) => {
+    const content = contents[virtualRow.index];
+    if (!content) return null;
+    return (
+      <Link
+        key={virtualRow.key}
+        ref={windowVirtualizer.measureElement}
+        data-index={virtualRow.index}
+        href={`/blog/${content.slug}`}
+        className="absolute top-0 will-change-transform"
+        style={{
+          left: `calc(${virtualRow.lane} * (100% / ${lanes}) + ${
+            virtualRow.lane
+          } * ${gap / lanes}px)`,
+          width: `calc(100% / ${lanes} - ${((lanes - 1) * gap) / lanes}px)`,
+          transform: `translateY(${virtualRow.start}px)`,
+        }}
+      >
+        <ContentCard content={content} />
+      </Link>
+    );
+  });
+```
+
+## 7. Motion
+
+마지막으로 Motion을 이용해 다양한 애니메이션들을 넣어보려고 계획중입니다.
+부드러운 전환으로 블로그를 방문하는 분들에게 더 나은 경험을 제공하기 위함입니다. (+ 자기만족)
+어떤 영역에 어떤 애니메이션이 들어가면 좋을지 더 고민하고, [Animations on the web](https://animations.dev) 강의를 수강했던 기억을 더듬어서 다양한 시도를 해볼 예정입니다.
+
+블로그 이전 작업이 거의 마무리되어가고 있습니다. 다른 Zone들도 하루 빨리 완성해서 완성도를 높이는 방향으로 개발을 지속해나가려고 합니다.
