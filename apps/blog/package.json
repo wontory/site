@@ -25,6 +25,7 @@
     "jotai": "^2.11.1",
     "motion": "catalog:",
     "next": "catalog:",
+    "next-themes": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-use-measure": "^2.1.1",
