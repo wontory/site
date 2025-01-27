@@ -38,7 +38,7 @@ export default async function Content({
   return (
     <>
       <PageHeader title={content.title} description={content.description} />
-      <article className="prose mx-auto w-full max-w-screen-md">
+      <article className="prose dark:prose-invert mx-auto w-full max-w-screen-md">
         <MDXContent code={content.content} />
       </article>
     </>

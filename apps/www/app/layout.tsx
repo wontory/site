@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ko" className={pretendard.variable}>
+    <html lang="ko" className={pretendard.variable} suppressHydrationWarning>
       <body>
         <BaseLayout path="/">{children}</BaseLayout>
         <PrefetchCrossZoneLinks hrefs={['/blog', '/craft']} />
