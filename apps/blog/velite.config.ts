@@ -13,9 +13,7 @@ const rehypeExpressiveCodeOptions: RehypeExpressiveCodeOptions = {
 
 const slugify = (slug: string) => slug.split('/').slice(1).join('/')
 
-const calculateReadingTime = (wordCount: number) => ({
-  readingTime: Math.round(wordCount / 120),
-})
+const calcReadingTime = (wordCount: number) => Math.round(wordCount / 120)
 
 const memo = defineCollection({
   name: 'Memo',
@@ -33,7 +31,9 @@ const memo = defineCollection({
     })
     .transform((data) => ({
       ...data,
-      metadata: calculateReadingTime(data.metadata.wordCount),
+      metadata: {
+        readingTime: calcReadingTime(data.metadata.wordCount),
+      },
       slug: slugify(data.slug),
     })),
 })
@@ -55,7 +55,9 @@ const post = defineCollection({
     })
     .transform((data) => ({
       ...data,
-      metadata: calculateReadingTime(data.metadata.wordCount),
+      metadata: {
+        readingTime: calcReadingTime(data.metadata.wordCount),
+      },
       slug: slugify(data.slug),
     })),
 })
