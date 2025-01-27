@@ -29,7 +29,7 @@ const getLanes = (width: number) => {
 function ContentList() {
   const filter = useAtomValue(filterAtom)
   const contents = getContents(filter).sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+    (a, b) => Date.parse(b.date) - Date.parse(a.date),
   )
 
   const [ref, bounds] = useMeasure()
