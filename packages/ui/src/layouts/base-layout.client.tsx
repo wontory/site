@@ -1,11 +1,19 @@
 'use client'
 
-import { GithubIcon, LinkedinIcon, MailIcon, TwitterIcon } from 'lucide-react'
+import {
+  GithubIcon,
+  LinkedinIcon,
+  MailIcon,
+  MoonIcon,
+  SunIcon,
+  TwitterIcon,
+} from 'lucide-react'
 import { motion } from 'motion/react'
+import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { useState } from 'react'
 
-import { buttonVariants } from '#components/button'
+import { Button, buttonVariants } from '#components/button'
 
 const HEADER_NAV_LINKS = [
   { href: '/', label: 'Home' },
@@ -31,32 +39,58 @@ function DynamicLink({ path, href, children, ...props }: DynamicLinkProps) {
   )
 }
 
+function ModeToggle() {
+  const { resolvedTheme, setTheme } = useTheme()
+
+  const handleClick = () => {
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+  }
+
+  return (
+    <Button
+      variant="outline"
+      size="icon"
+      className="size-9 rounded-xl"
+      onClick={handleClick}
+    >
+      <SunIcon className="dark:-rotate-90 size-5 rotate-0 scale-100 transition-all dark:scale-0" />
+      <MoonIcon className="absolute size-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <span className="sr-only">Toggle theme</span>
+    </Button>
+  )
+}
+
 function SiteHeader({ path }: { path: string }) {
   const [activePath, setActivePath] = useState<string>(path)
 
   return (
     <header className="container sticky top-0 z-50 mx-auto flex justify-center px-4 pt-6">
-      <nav className="flex rounded-2xl border bg-background p-1 shadow">
-        {HEADER_NAV_LINKS.map(({ href, label }) => (
-          <DynamicLink
-            key={href}
-            path={path}
-            href={href}
-            className="relative px-4 py-2 font-medium text-sm"
-            onMouseEnter={() => setActivePath(href)}
-            onMouseLeave={() => setActivePath(path)}
-          >
-            {activePath === href && (
-              <motion.div
-                layoutId="highlight"
-                transition={{ type: 'spring', bounce: 0.3 }}
-                className="absolute inset-0 rounded-xl bg-primary/10"
-              />
-            )}
-            {label}
-          </DynamicLink>
-        ))}
-      </nav>
+      <div className="flex items-center gap-1 rounded-2xl border bg-background p-1 shadow">
+        <nav className="flex gap-1">
+          {HEADER_NAV_LINKS.map(({ href, label }) => (
+            <DynamicLink
+              key={href}
+              path={path}
+              href={href}
+              className="relative px-4 py-2 font-medium text-sm"
+              onMouseEnter={() => setActivePath(href)}
+              onMouseLeave={() => setActivePath(path)}
+            >
+              {activePath === href && (
+                <motion.div
+                  layoutId="highlight"
+                  transition={{ type: 'spring', bounce: 0.2 }}
+                  className="absolute inset-0 rounded-xl bg-primary/10"
+                />
+              )}
+              {label}
+            </DynamicLink>
+          ))}
+        </nav>
+        <div className="flex gap-1">
+          <ModeToggle />
+        </div>
+      </div>
     </header>
   )
 }

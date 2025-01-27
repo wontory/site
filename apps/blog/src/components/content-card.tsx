@@ -17,7 +17,12 @@ function ContentCard({ content }: { content: Memo & Post }) {
   return (
     <Card className="overflow-hidden transition-colors hover:bg-primary/5">
       {content.cover && (
-        <Image src={content.cover} alt={content.title} placeholder="blur" />
+        <Image
+          src={content.cover}
+          alt={content.title}
+          placeholder="blur"
+          className="w-full"
+        />
       )}
       <CardHeader className="p-4">
         <span className="text-primary/60 text-sm">
