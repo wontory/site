@@ -29,7 +29,8 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-use-measure": "^2.1.1",
-    "rehype-expressive-code": "^0.40.1"
+    "rehype-expressive-code": "^0.40.1",
+    "rehype-slug": "^6.0.0"
   },
   "devDependencies": {
     "@config/typescript": "workspace:*",

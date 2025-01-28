@@ -3,6 +3,7 @@ import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 import rehypeExpressiveCode, {
   type RehypeExpressiveCodeOptions,
 } from 'rehype-expressive-code'
+import rehypeSlug from 'rehype-slug'
 import { defineCollection, defineConfig, s } from 'velite'
 
 const rehypeExpressiveCodeOptions: RehypeExpressiveCodeOptions = {
@@ -73,7 +74,10 @@ export default defineConfig({
   },
   collections: { memo, post },
   mdx: {
-    rehypePlugins: [[rehypeExpressiveCode, rehypeExpressiveCodeOptions]],
+    rehypePlugins: [
+      rehypeSlug,
+      [rehypeExpressiveCode, rehypeExpressiveCodeOptions],
+    ],
     remarkPlugins: [],
   },
 })
