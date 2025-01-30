@@ -7,6 +7,7 @@ import { CalendarIcon, ClockIcon } from '@package/ui/icons/lucide'
 
 import { GiscusComment } from '#components/giscus-comment'
 import { MDXContent } from '#components/mdx-content'
+import { TableOfContents } from '#components/table-of-contents'
 import { memo, post } from '#site/content'
 
 const contents = [...memo, ...post] as const
@@ -52,10 +53,13 @@ export default async function Content({
           </span>
         </div>
       </PageHeader>
-      <article className="prose dark:prose-invert mx-auto my-8 w-full max-w-screen-md">
+      <article className="prose dark:prose-invert container mx-auto my-8 max-w-screen-md text-justify">
         <MDXContent code={content.content} />
       </article>
-      <section className="mx-auto w-full max-w-screen-md">
+      <aside className="container sticky bottom-6 z-50 mx-auto flex max-w-screen-md justify-center">
+        <TableOfContents toc={content.toc} />
+      </aside>
+      <section className="container mx-auto max-w-screen-md">
         <GiscusComment />
       </section>
     </>

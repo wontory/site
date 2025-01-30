@@ -1,0 +1,142 @@
+'use client'
+
+import { AnimatePresence, motion } from 'motion/react'
+import Link from 'next/link'
+import { useEffect, useMemo, useState } from 'react'
+import useMeasure from 'react-use-measure'
+
+import { ScrollArea } from '@package/ui/components/scroll-area'
+import { cn } from '@package/utility/cn'
+
+import { Gauge } from '#components/gauge'
+import { useActiveItem } from '#hooks/use-active-item'
+import { useMounted } from '#hooks/use-mounted'
+
+interface TreeProps {
+  tree: TocEntry[]
+  level?: number
+  activeItem?: string | null
+}
+
+function Tree({ tree, level = 1, activeItem }: TreeProps) {
+  return tree.length && level < 3 ? (
+    <ul
+      className={cn('mt-2 flex flex-col gap-2 first:mt-0', {
+        'pl-4': level !== 1,
+      })}
+    >
+      {tree.map((item) => (
+        <li key={item.url}>
+          <Link
+            href={item.url}
+            className={cn(
+              'w-full text-sm',
+              item.url === `#${activeItem}` &&
+                'font-semibold text-primary-foreground',
+            )}
+          >
+            {item.title}
+          </Link>
+          {item.items?.length ? (
+            <Tree tree={item.items} level={level + 1} activeItem={activeItem} />
+          ) : null}
+        </li>
+      ))}
+    </ul>
+  ) : null
+}
+
+export interface TocEntry {
+  title: string
+  url: string
+  items: TocEntry[]
+}
+
+function TableOfContents({ toc }: { toc: TocEntry[] }) {
+  const items = useMemo(
+    () =>
+      toc
+        .reduce(
+          (acc, item) => {
+            acc.push({ url: item.url, title: item.title })
+            if (item.items?.length) {
+              acc.push(
+                ...item.items.map((subItem) => ({
+                  url: subItem.url,
+                  title: subItem.title,
+                })),
+              )
+            }
+            return acc
+          },
+          [] as { url: string; title: string }[],
+        )
+        .map((item) => ({
+          url: item.url.split('#')[1],
+          title: item.title,
+        })),
+    [toc],
+  )
+  const itemIds = useMemo(() => items.map((item) => item.url), [items])
+
+  const [ref, bounds] = useMeasure()
+  const activeHeading = useActiveItem(itemIds)
+  const mounted = useMounted()
+
+  const [open, setOpen] = useState(false)
+  const [scrollPercentage, setScrollPercentage] = useState(0)
+
+  useEffect(() => {
+    const updateScrollPercentage = () => {
+      setScrollPercentage(
+        window.scrollY / (document.body.scrollHeight - window.innerHeight),
+      )
+    }
+
+    window.addEventListener('scroll', updateScrollPercentage)
+    updateScrollPercentage()
+
+    return () => window.removeEventListener('scroll', updateScrollPercentage)
+  }, [])
+
+  return (
+    mounted && (
+      <motion.div
+        className="z-50 w-full max-w-80 overflow-hidden rounded-3xl bg-primary shadow-lg ring"
+        onClick={() => {
+          setOpen((prev) => !prev)
+        }}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ height: bounds.height, opacity: 1, y: 0 }}
+      >
+        <div className="cursor-pointer bg-natural-900" ref={ref}>
+          <div className="flex cursor-pointer items-center gap-4 px-4 py-3 text-primary-foreground">
+            <Gauge
+              value={scrollPercentage * 100}
+              className="size-6 text-[8px]"
+            />
+            <motion.span className="line-clamp-1 font-bold">
+              {items.find((item) => item.url === activeHeading)?.title ??
+                'Table of Contents'}
+            </motion.span>
+          </div>
+          <AnimatePresence mode="popLayout">
+            {open && (
+              <motion.div
+                transition={{ duration: 0.1 }}
+                exit={{ opacity: 0 }}
+                layout
+              >
+                <ScrollArea className="flex max-h-60 flex-col gap-2 px-4 pb-3 text-primary-foreground/60">
+                  <Tree tree={toc} activeItem={activeHeading} />
+                </ScrollArea>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.div>
+    )
+  )
+}
+
+export { TableOfContents }
