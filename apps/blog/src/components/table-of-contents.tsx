@@ -26,7 +26,7 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
           <Link
             href={item.url}
             className={cn(
-              'block w-full py-1 text-sm',
+              'block w-full py-1 text-sm transition-all',
               item.url === `#${activeItem}` &&
                 'font-semibold text-primary-foreground',
             )}
