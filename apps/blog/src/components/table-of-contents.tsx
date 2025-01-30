@@ -1,6 +1,6 @@
 'use client'
 
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, MotionConfig, motion } from 'motion/react'
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import useMeasure from 'react-use-measure'
@@ -89,7 +89,10 @@ function TableOfContents({ toc }: { toc: TocEntry[] }) {
   useEffect(() => {
     const updateScrollPercentage = () => {
       setScrollPercentage(
-        window.scrollY / (document.body.scrollHeight - window.innerHeight),
+        Math.max(
+          window.scrollY / (document.body.scrollHeight - window.innerHeight),
+          0,
+        ),
       )
     }
 
@@ -101,40 +104,52 @@ function TableOfContents({ toc }: { toc: TocEntry[] }) {
 
   return (
     mounted && (
-      <motion.div
-        className="z-50 w-full max-w-80 overflow-hidden rounded-3xl bg-primary shadow-lg ring"
-        onClick={() => {
-          setOpen((prev) => !prev)
-        }}
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ height: bounds.height, opacity: 1, y: 0 }}
-      >
-        <div className="cursor-pointer bg-natural-900" ref={ref}>
-          <div className="flex cursor-pointer items-center gap-4 px-4 py-3 text-primary-foreground">
-            <Gauge
-              value={scrollPercentage * 100}
-              className="size-6 text-[8px]"
-            />
-            <motion.span className="line-clamp-1 font-bold">
-              {items.find((item) => item.url === activeHeading)?.title ??
-                'Table of Contents'}
-            </motion.span>
+      <MotionConfig transition={{ type: 'spring', bounce: 0.3, duration: 0.5 }}>
+        <motion.div
+          className="w-full max-w-80 overflow-hidden rounded-3xl bg-primary shadow-lg ring"
+          onClick={() => {
+            setOpen((prev) => !prev)
+          }}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ height: bounds.height, opacity: 1, y: 0 }}
+        >
+          <div className="cursor-pointer bg-natural-900" ref={ref}>
+            <div className="flex cursor-pointer items-center gap-4 px-4 py-3 text-primary-foreground">
+              <div className="grow-0">
+                <Gauge
+                  value={scrollPercentage * 100}
+                  className="size-6 text-[8px]"
+                />
+              </div>
+              <AnimatePresence mode="popLayout">
+                <motion.span
+                  key={activeHeading}
+                  className="line-clamp-1 font-bold"
+                  initial={{ y: 12, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -12, opacity: 0 }}
+                >
+                  {items.find((item) => item.url === activeHeading)?.title ??
+                    'Table of Contents'}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+            <AnimatePresence mode="popLayout">
+              {open && (
+                <motion.div
+                  transition={{ duration: 0.1 }}
+                  exit={{ opacity: 0 }}
+                  layout
+                >
+                  <ScrollArea className="flex max-h-60 flex-col gap-2 px-4 pb-3 text-primary-foreground/60">
+                    <Tree tree={toc} activeItem={activeHeading} />
+                  </ScrollArea>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-          <AnimatePresence mode="popLayout">
-            {open && (
-              <motion.div
-                transition={{ duration: 0.1 }}
-                exit={{ opacity: 0 }}
-                layout
-              >
-                <ScrollArea className="flex max-h-60 flex-col gap-2 px-4 pb-3 text-primary-foreground/60">
-                  <Tree tree={toc} activeItem={activeHeading} />
-                </ScrollArea>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </motion.div>
+        </motion.div>
+      </MotionConfig>
     )
   )
 }
