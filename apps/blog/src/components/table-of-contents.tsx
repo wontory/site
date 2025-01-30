@@ -20,17 +20,13 @@ interface TreeProps {
 
 function Tree({ tree, level = 1, activeItem }: TreeProps) {
   return tree.length && level < 3 ? (
-    <ul
-      className={cn('mt-2 flex flex-col gap-2 first:mt-0', {
-        'pl-4': level !== 1,
-      })}
-    >
+    <ul className={cn({ 'pl-4': level !== 1 })}>
       {tree.map((item) => (
         <li key={item.url}>
           <Link
             href={item.url}
             className={cn(
-              'w-full text-sm',
+              'block w-full py-1 text-sm',
               item.url === `#${activeItem}` &&
                 'font-semibold text-primary-foreground',
             )}
@@ -141,7 +137,7 @@ function TableOfContents({ toc }: { toc: TocEntry[] }) {
                   exit={{ opacity: 0 }}
                   layout
                 >
-                  <ScrollArea className="flex max-h-60 flex-col gap-2 px-4 pb-3 text-primary-foreground/60">
+                  <ScrollArea className="flex max-h-60 flex-col gap-2 px-4 pb-2 text-primary-foreground/60">
                     <Tree tree={toc} activeItem={activeHeading} />
                   </ScrollArea>
                 </motion.div>
