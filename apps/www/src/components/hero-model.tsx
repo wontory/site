@@ -27,7 +27,6 @@ function HeroModel() {
         fontSize={0.5}
         font="/fonts/pretendard-semi-bold.otf"
         position={[0, 0, -1]}
-        fontWeight="bold"
       >
         wontory.dev
       </Text>
