@@ -16,9 +16,9 @@
   "dependencies": {
     "@package/ui": "workspace:*",
     "@package/utility": "workspace:*",
-    "@react-three/drei": "^9.121.4",
-    "@react-three/fiber": "^8.17.14",
-    "@types/three": "^0.172.0",
+    "@react-three/drei": "10.0.0-rc.0",
+    "@react-three/fiber": "9.0.0-rc.4",
+    "leva": "^0.10.0",
     "motion": "catalog:",
     "next": "catalog:",
     "react": "catalog:",
@@ -31,6 +31,7 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@types/three": "^0.172.0",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
   }
