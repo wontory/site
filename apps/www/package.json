@@ -21,6 +21,7 @@
     "leva": "^0.10.0",
     "motion": "catalog:",
     "next": "catalog:",
+    "next-themes": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "three": "^0.173.0"
