@@ -1,10 +1,9 @@
-import { Button } from '@package/ui/components/button'
+import { HeroScene } from '#components/hero-scene'
 
 export default function Home() {
   return (
-    <>
-      <div className="font-bold text-3xl underline">Hello www!</div>
-      <Button>Button</Button>
-    </>
+    <section className="relative aspect-video overflow-hidden rounded-3xl">
+      <HeroScene />
+    </section>
   )
 }
