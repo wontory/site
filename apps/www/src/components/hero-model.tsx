@@ -1,5 +1,6 @@
 import { MeshTransmissionMaterial, Text, useGLTF } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
+import { useTheme } from 'next-themes'
 import { useRef } from 'react'
 import type { Mesh } from 'three'
 
@@ -7,6 +8,7 @@ function HeroModel() {
   const mesh = useRef<Mesh>(null)
   const { nodes } = useGLTF('/models/logo.glb')
   const { viewport } = useThree()
+  const { resolvedTheme } = useTheme()
 
   useFrame(() => {
     if (mesh.current) mesh.current.rotation.z += 0.02
@@ -28,6 +30,10 @@ function HeroModel() {
         font="/fonts/pretendard-semi-bold.otf"
         position={[0, 0, -1]}
       >
+        <color
+          attach="color"
+          args={resolvedTheme === 'dark' ? [0x020205] : [0xfafafa]}
+        />
         wontory.dev
       </Text>
       <mesh ref={mesh} {...nodes.Logo} position={[0, 0, 0.5]}>
