@@ -59,7 +59,7 @@ export default async function Content({
       <aside className="container sticky bottom-6 z-10 mx-auto flex max-w-screen-md justify-center">
         <TableOfContents toc={content.toc} />
       </aside>
-      <section className="container mx-auto max-w-screen-md">
+      <section className="container mx-auto mt-8 max-w-screen-md">
         <GiscusComment />
       </section>
     </>
