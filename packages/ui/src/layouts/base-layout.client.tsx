@@ -65,7 +65,7 @@ function SiteHeader({ path }: { path: string }) {
 
   return (
     <header className="container sticky top-0 z-50 mx-auto flex justify-center px-4 pt-6">
-      <div className="flex items-center gap-1 rounded-2xl border bg-background p-1 shadow">
+      <div className="flex items-center gap-1 rounded-2xl border bg-background p-1 shadow-lg">
         <nav className="flex gap-1">
           {HEADER_NAV_LINKS.map(({ href, label }) => (
             <DynamicLink
