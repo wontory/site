@@ -1,10 +1,12 @@
-import { Button } from '@package/ui/components/button'
+import { PageHeader } from '@package/ui/components/page-header'
 
 export default function Home() {
   return (
     <>
-      <div className="font-bold text-3xl underline">Hello craft!</div>
-      <Button>Button</Button>
+      <PageHeader
+        title="Craft"
+        description="Some boring things I've created for fun."
+      />
     </>
   )
 }
