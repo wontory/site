@@ -4,7 +4,7 @@ import { PageHeader } from '@package/ui/components/page-header'
 
 import { ContentFilter } from '#components/content-filter'
 import { ContentList } from '#components/content-list'
-import { filterStore } from '#stores/filter-store'
+import { contentsStore } from '#stores/contents-store'
 
 export default async function Home() {
   return (
@@ -13,7 +13,7 @@ export default async function Home() {
         title="Blog"
         description="My precious thoughts and inspirations."
       />
-      <Provider store={filterStore}>
+      <Provider store={contentsStore}>
         <ContentFilter />
         <ContentList />
       </Provider>

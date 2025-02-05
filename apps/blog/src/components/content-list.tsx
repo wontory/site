@@ -6,19 +6,7 @@ import Link from 'next/link'
 import useMeasure from 'react-use-measure'
 
 import { ContentCard } from '#components/content-card'
-import { memo, post } from '#site/content'
-import { type Filter, filterAtom } from '#stores/filter-store'
-
-const getContents = (filter: Filter) => {
-  switch (filter) {
-    case 'memo':
-      return memo
-    case 'post':
-      return post
-    default:
-      return [...memo, ...post]
-  }
-}
+import { contentsAtom } from '#stores/contents-store'
 
 const getLanes = (width: number) => {
   if (width <= 640) return 1
@@ -27,17 +15,14 @@ const getLanes = (width: number) => {
 }
 
 function ContentList() {
-  const filter = useAtomValue(filterAtom)
-  const contents = getContents(filter).sort(
-    (a, b) => Date.parse(b.date) - Date.parse(a.date),
-  )
+  const contents = useAtomValue(contentsAtom)
 
   const [ref, bounds] = useMeasure()
   const gap = 16 as const
   const lanes = getLanes(bounds.width)
 
   const windowVirtualizer = useWindowVirtualizer({
-    count: contents.length,
+    count: contents?.length ?? 0,
     estimateSize: () => 300,
     overscan: 6,
     gap: gap,
@@ -46,7 +31,7 @@ function ContentList() {
 
   const renderList = () =>
     windowVirtualizer.getVirtualItems().map((virtualRow) => {
-      const content = contents[virtualRow.index]
+      const content = contents?.[virtualRow.index] ?? null
       if (!content) return null
       return (
         <Link

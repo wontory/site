@@ -11,7 +11,7 @@ import {
 } from '@package/ui/components/select'
 import { FilterIcon } from '@package/ui/icons/lucide'
 
-import { type SelectedFilter, filterAtom } from '#stores/filter-store'
+import { type SelectedFilter, filterAtom } from '#stores/contents-store'
 
 function ContentFilter() {
   const [filter, setFilter] = useAtom(filterAtom)
