@@ -7,31 +7,32 @@ import { type Memo, type Post, memo, post } from '#site/content'
 export type Filter = 'all' | 'post' | 'memo' | undefined
 export type SelectedFilter = 'all' | 'post' | 'memo'
 
+const toSortedByDate = (contents: (Memo & Post)[]) => {
+  const contents_copy = contents.slice()
+  contents_copy.sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
+  return contents_copy
+}
+
 const contentsStore = createStore()
 const filterAtom = atom<Filter>()
 const contentsAtom = atom<(Memo & Post)[]>()
 contentsStore.set(filterAtom, undefined)
-contentsStore.set(contentsAtom, [...memo, ...post])
+contentsStore.set(contentsAtom, toSortedByDate([...memo, ...post]))
 
 const unsub = contentsStore.sub(filterAtom, () => {
   const filter = contentsStore.get(filterAtom)
-  let contents: (Memo & Post)[]
 
   switch (filter) {
     case 'post':
-      contents = post
+      contentsStore.set(contentsAtom, toSortedByDate(post))
       break
     case 'memo':
-      contents = memo
+      contentsStore.set(contentsAtom, toSortedByDate(memo))
       break
     default:
-      contents = [...memo, ...post]
+      contentsStore.set(contentsAtom, toSortedByDate([...memo, ...post]))
+      break
   }
-
-  contentsStore.set(
-    contentsAtom,
-    contents.sort((a, b) => Date.parse(b.date) - Date.parse(a.date)),
-  )
 })
 
 export { contentsStore, contentsAtom, filterAtom, unsub }

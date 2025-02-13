@@ -16,6 +16,8 @@
   "dependencies": {
     "@package/ui": "workspace:*",
     "@package/utility": "workspace:*",
+    "@vercel/analytics": "catalog:",
+    "@vercel/speed-insights": "catalog:",
     "motion": "catalog:",
     "next": "catalog:",
     "react": "catalog:",
