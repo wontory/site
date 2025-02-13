@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
 
 import { pretendard } from '@package/ui/fonts/pretendard'
@@ -21,6 +23,8 @@ export default function RootLayout({
       <body>
         <BaseLayout path="/">{children}</BaseLayout>
         <PrefetchCrossZoneLinks hrefs={['/blog', '/craft']} />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

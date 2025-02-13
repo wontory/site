@@ -21,6 +21,8 @@
     "@package/ui": "workspace:*",
     "@package/utility": "workspace:*",
     "@tanstack/react-virtual": "^3.11.2",
+    "@vercel/analytics": "catalog:",
+    "@vercel/speed-insights": "catalog:",
     "date-fns": "catalog:",
     "jotai": "^2.11.1",
     "motion": "catalog:",
