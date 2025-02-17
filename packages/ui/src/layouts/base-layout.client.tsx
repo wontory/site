@@ -120,7 +120,7 @@ function SiteFooter({ path }: { path: string }) {
       <div className="w-full rounded-2xl bg-primary p-10 transition-colors">
         <div className="grid gap-8 lg:grid-flow-col lg:grid-cols-7 lg:gap-16">
           <div className="flex flex-col justify-center lg:col-span-2">
-            <span className="mb-2 font-bold text-primary-foreground text-xl transition-colors">
+            <span className="mb-2 font-semibold text-primary-foreground text-xl transition-colors">
               Wontory
             </span>
             <span className="text-primary-foreground/60 text-sm transition-colors">
@@ -159,7 +159,7 @@ function SiteFooter({ path }: { path: string }) {
             </div>
           </div>
           <div className="flex flex-col justify-center lg:col-span-2">
-            <span className="mb-2 font-bold text-primary-foreground transition-colors">
+            <span className="mb-2 font-semibold text-primary-foreground transition-colors">
               Stay in touch
             </span>
             <span className="mb-4 text-primary-foreground/60 text-sm transition-colors">
