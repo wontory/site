@@ -69,13 +69,18 @@
   * {
     @apply border-border outline-ring/50;
   }
-  html{
+  html {
     @apply scroll-smooth;
   }
   body {
     @apply bg-background text-foreground;
   }
-  h1,h2,h3,h4,h5,h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply scroll-mt-24;
   }
 }
@@ -101,7 +106,7 @@
 
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  
+
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
 
@@ -114,5 +119,5 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --font-sans: var(--font-pretendard)
+  --font-sans: var(--font-pretendard);
 }
