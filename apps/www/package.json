@@ -16,8 +16,8 @@
   "dependencies": {
     "@package/ui": "workspace:*",
     "@package/utility": "workspace:*",
-    "@react-three/drei": "10.0.0-rc.0",
-    "@react-three/fiber": "9.0.0-rc.4",
+    "@react-three/drei": "10.0.0-rc.2",
+    "@react-three/fiber": "9.0.0-rc.8",
     "@vercel/analytics": "catalog:",
     "@vercel/speed-insights": "catalog:",
     "leva": "^0.10.0",
@@ -34,7 +34,7 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@types/three": "^0.172.0",
+    "@types/three": "^0.173.0",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
   }
