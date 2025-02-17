@@ -140,9 +140,9 @@ function SiteFooter({ path }: { path: string }) {
           </div>
           <div className="flex items-center lg:col-span-3">
             <div className="flex flex-col gap-4 text-sm">
-              <h4 className="font-medium text-primary-foreground/60 transition-colors">
+              <span className="font-medium text-primary-foreground/60 transition-colors">
                 General
-              </h4>
+              </span>
               <ul className="space-y-2">
                 {FOOTER_NAV_LINKS.GENERAL.map(({ href, label }) => (
                   <li key={href}>
@@ -159,9 +159,9 @@ function SiteFooter({ path }: { path: string }) {
             </div>
           </div>
           <div className="flex flex-col justify-center lg:col-span-2">
-            <h4 className="mb-2 font-bold text-primary-foreground transition-colors">
+            <span className="mb-2 font-bold text-primary-foreground transition-colors">
               Stay in touch
-            </h4>
+            </span>
             <span className="mb-4 text-primary-foreground/60 text-sm transition-colors">
               Don't miss out. Get an email whenever I post, no spam.
             </span>
