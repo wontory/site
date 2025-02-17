@@ -1,10 +1,11 @@
-export interface PageHeaderProps {
-  children?: React.ReactNode
+function PageHeader({
+  children,
+  title,
+  description,
+}: React.ComponentProps<'div'> & {
   title: string
   description: string
-}
-
-function PageHeader({ children, title, description }: PageHeaderProps) {
+}) {
   return (
     <div className="flex flex-col items-center justify-center gap-2 rounded-2xl bg-primary px-8 py-16 text-center">
       <h1 className="font-semibold text-3xl text-primary-foreground">
