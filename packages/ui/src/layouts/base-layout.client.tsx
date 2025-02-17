@@ -123,7 +123,7 @@ function SiteFooter({ path }: { path: string }) {
             <h3 className="mb-2 font-bold text-primary-foreground text-xl transition-colors">
               Wontory
             </h3>
-            <span className="text-primary-foreground/50 text-sm transition-colors">
+            <span className="text-primary-foreground/60 text-sm transition-colors">
               Frontend Developer who loves UX Improvements with Animations.
             </span>
             <div className="mt-4 flex gap-4">
@@ -140,7 +140,7 @@ function SiteFooter({ path }: { path: string }) {
           </div>
           <div className="flex items-center lg:col-span-3">
             <div className="flex flex-col gap-4 text-sm">
-              <h4 className="font-medium text-primary-foreground/50 transition-colors">
+              <h4 className="font-medium text-primary-foreground/60 transition-colors">
                 General
               </h4>
               <ul className="space-y-2">
@@ -162,7 +162,7 @@ function SiteFooter({ path }: { path: string }) {
             <h4 className="mb-2 font-bold text-primary-foreground transition-colors">
               Stay in touch
             </h4>
-            <span className="mb-4 text-primary-foreground/50 text-sm transition-colors">
+            <span className="mb-4 text-primary-foreground/60 text-sm transition-colors">
               Don't miss out. Get an email whenever I post, no spam.
             </span>
             <a

@@ -22,7 +22,7 @@ function ContentFilter() {
 
   return (
     <Select onValueChange={handleValueChange}>
-      <SelectTrigger defaultValue={filter} className="w-36">
+      <SelectTrigger defaultValue={filter} className="w-36" aria-label="Filter">
         <FilterIcon className="opacity-50" />
         <SelectValue placeholder="Filter" />
       </SelectTrigger>
