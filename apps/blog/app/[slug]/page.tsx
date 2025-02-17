@@ -43,17 +43,17 @@ export default async function Content({
     <>
       <PageHeader title={content.title} description={content.description}>
         <div className="mt-6 flex gap-4">
-          <span className="flex items-center gap-2 text-primary-foreground text-xs">
-            <CalendarIcon className="size-3" />
+          <span className="flex items-center gap-2 text-primary-foreground text-xs transition-colors">
+            <CalendarIcon className="size-3 text-primary-foreground transition-colors" />
             {format(content.date, 'PPP')}
           </span>
-          <span className="flex items-center gap-2 text-primary-foreground text-xs">
-            <ClockIcon className="size-3" />
+          <span className="flex items-center gap-2 text-primary-foreground text-xs transition-colors">
+            <ClockIcon className="size-3 text-primary-foreground transition-colors" />
             {content.metadata.readingTime} min read
           </span>
         </div>
       </PageHeader>
-      <article className="prose dark:prose-invert container mx-auto my-8 max-w-screen-md text-justify">
+      <article className="prose dark:prose-invert container mx-auto my-8 max-w-screen-md text-justify transition-colors">
         <MDXContent code={content.content} />
       </article>
       <aside className="container sticky bottom-6 z-10 mx-auto flex max-w-screen-md justify-center">
