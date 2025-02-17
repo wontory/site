@@ -26,7 +26,7 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
           <Link
             href={item.url}
             className={cn(
-              'block w-full py-1 text-sm transition-all',
+              'block w-full py-1 text-primary-foreground/60 text-sm transition-all',
               item.url === `#${activeItem}` &&
                 'font-semibold text-primary-foreground',
             )}
@@ -102,25 +102,25 @@ function TableOfContents({ toc }: { toc: TocEntry[] }) {
     mounted && (
       <MotionConfig transition={{ type: 'spring', bounce: 0.3, duration: 0.5 }}>
         <motion.div
-          className="w-full max-w-80 overflow-hidden rounded-3xl bg-primary shadow-lg ring"
+          className="w-full max-w-80 overflow-hidden rounded-3xl bg-primary shadow-lg transition-colors"
           onClick={() => {
             setOpen((prev) => !prev)
           }}
           initial={{ opacity: 0, y: 8 }}
           animate={{ height: bounds.height, opacity: 1, y: 0 }}
         >
-          <div className="cursor-pointer bg-natural-900" ref={ref}>
-            <div className="flex cursor-pointer items-center gap-4 px-4 py-3 text-primary-foreground">
+          <div className="cursor-pointer" ref={ref}>
+            <div className="flex cursor-pointer items-center gap-4 px-4 py-3">
               <div className="grow-0">
                 <Gauge
                   value={scrollPercentage * 100}
-                  className="size-6 text-[8px]"
+                  className="size-6 text-[8px] text-primary-foreground"
                 />
               </div>
               <AnimatePresence mode="popLayout">
                 <motion.span
                   key={activeHeading}
-                  className="line-clamp-1 font-bold"
+                  className="line-clamp-1 font-bold text-primary-foreground transition-colors"
                   initial={{ y: 12, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -12, opacity: 0 }}
@@ -137,7 +137,7 @@ function TableOfContents({ toc }: { toc: TocEntry[] }) {
                   exit={{ opacity: 0 }}
                   layout
                 >
-                  <ScrollArea className="flex max-h-60 flex-col gap-2 px-4 pb-2 text-primary-foreground/60">
+                  <ScrollArea className="flex max-h-60 flex-col gap-2 px-4 pb-2">
                     <Tree tree={toc} activeItem={activeHeading} />
                   </ScrollArea>
                 </motion.div>

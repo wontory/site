@@ -5,7 +5,7 @@ import * as runtime from 'react/jsx-runtime'
 const sharedComponents: MDXComponents = {
   img: ({ className, ...props }) => (
     <Image
-      className="mx-auto w-full rounded-md border"
+      className="mx-auto w-full rounded-md border transition-colors"
       draggable={false}
       {...props}
     />

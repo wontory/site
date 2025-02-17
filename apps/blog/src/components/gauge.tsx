@@ -44,7 +44,7 @@ function Gauge({ max = 100, min = 0, value = 0, className }: GaugeProps) {
             strokeDashoffset="0"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="stroke-primary-foreground/20 opacity-100"
+            className="stroke-primary-foreground/20 opacity-100 transition-colors"
             style={
               {
                 '--stroke-percent': 90 - currentPercent,
@@ -67,7 +67,7 @@ function Gauge({ max = 100, min = 0, value = 0, className }: GaugeProps) {
           strokeDashoffset="0"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="stroke-primary-foreground opacity-100"
+          className="stroke-primary-foreground opacity-100 transition-colors"
           style={
             {
               '--stroke-percent': currentPercent,

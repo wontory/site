@@ -21,23 +21,29 @@ function ContentCard({ content }: { content: Memo & Post }) {
           src={content.cover}
           alt={content.title}
           placeholder="blur"
-          className="w-full border-b"
+          className="w-full border-b transition-colors"
         />
       )}
       <CardHeader className="pb-3">
-        <span className="text-primary/60 text-sm">
+        <span className="text-primary/60 text-sm transition-colors">
           {format(content.date, 'PPP')}
         </span>
       </CardHeader>
       <CardContent className="space-y-1 pb-3">
-        <CardTitle className="text-lg">{content.title}</CardTitle>
-        <CardDescription className="line-clamp-2">
-          {content.description}
+        <CardTitle>
+          <h2 className="text-lg text-primary transition-colors">
+            {content.title}
+          </h2>
+        </CardTitle>
+        <CardDescription>
+          <p className="line-clamp-2 text-muted-foreground transition-colors">
+            {content.description}
+          </p>
         </CardDescription>
       </CardContent>
       <CardFooter>
-        <span className="flex items-center gap-2 text-xs">
-          <ClockIcon className="size-3" />
+        <span className="flex items-center gap-2 text-primary text-xs transition-colors">
+          <ClockIcon className="size-3 text-primary transition-colors" />
           {content.metadata.readingTime} min read
         </span>
       </CardFooter>
