@@ -22,7 +22,7 @@ function ContentFilter() {
 
   return (
     <Select onValueChange={handleValueChange}>
-      <SelectTrigger defaultValue={filter} className="w-40">
+      <SelectTrigger defaultValue={filter} className="w-36">
         <FilterIcon className="size-4" />
         <SelectValue placeholder="Filter" />
       </SelectTrigger>

@@ -1,14 +1,11 @@
 import { cn } from '@package/utility/cn'
 
-export interface CardProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    React.RefAttributes<HTMLDivElement> {}
-
-function Card({ className, ...props }: CardProps) {
+function Card({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
+      data-slot="card"
       className={cn(
-        'rounded-lg border bg-card text-card-foreground',
+        'rounded-xl border bg-card text-card-foreground shadow-sm',
         className,
       )}
       {...props}
@@ -16,64 +13,54 @@ function Card({ className, ...props }: CardProps) {
   )
 }
 
-export interface CardHeaderProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    React.RefAttributes<HTMLDivElement> {}
-
-function CardHeader({ className, ...props }: CardHeaderProps) {
+function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
-      className={cn('flex flex-col space-y-1.5 p-6', className)}
+      data-slot="card-header"
+      className={cn('flex flex-col gap-1.5 p-6', className)}
       {...props}
     />
   )
 }
 
-export interface CardTitleProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    React.RefAttributes<HTMLDivElement> {}
-
-function CardTitle({ className, ...props }: CardTitleProps) {
+function CardTitle({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
-      className={cn(
-        'font-semibold text-2xl leading-none tracking-tight',
-        className,
-      )}
+      data-slot="card-title"
+      className={cn('font-semibold leading-none tracking-tight', className)}
       {...props}
     />
   )
 }
 
-export interface CardDescriptionProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    React.RefAttributes<HTMLDivElement> {}
-
-function CardDescription({ className, ...props }: CardDescriptionProps) {
+function CardDescription({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <div
+      data-slot="card-description"
       className={cn('text-muted-foreground text-sm', className)}
       {...props}
     />
   )
 }
 
-export interface CardContentProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    React.RefAttributes<HTMLDivElement> {}
-
-function CardContent({ className, ...props }: CardContentProps) {
-  return <div className={cn('p-6 pt-0', className)} {...props} />
-}
-
-export interface CardFooterProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    React.RefAttributes<HTMLDivElement> {}
-
-function CardFooter({ className, ...props }: CardFooterProps) {
+function CardContent({ className, ...props }: React.ComponentProps<'div'>) {
   return (
-    <div className={cn('flex items-center p-6 pt-0', className)} {...props} />
+    <div
+      data-slot="card-content"
+      className={cn('p-6 pt-0', className)}
+      {...props}
+    />
   )
 }
 
-export { Card, CardHeader, CardFooter, CardContent, CardTitle, CardDescription }
+function CardFooter({ className, ...props }: React.ComponentProps<'div'>) {
+  return (
+    <div
+      data-slot="card-footer"
+      className={cn('flex items-center p-6 pt-0', className)}
+      {...props}
+    />
+  )
+}
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }

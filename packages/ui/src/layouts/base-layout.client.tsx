@@ -21,13 +21,12 @@ const HEADER_NAV_LINKS = [
   { href: '/craft', label: 'Craft' },
 ] as const
 
-interface DynamicLinkProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    React.RefAttributes<HTMLAnchorElement> {
-  path: string
-}
-
-function DynamicLink({ path, href, children, ...props }: DynamicLinkProps) {
+function DynamicLink({
+  path,
+  href,
+  children,
+  ...props
+}: React.ComponentProps<'a'> & { path: string }) {
   return path === href ? (
     <Link href={href} {...props}>
       {children}
@@ -53,8 +52,8 @@ function ModeToggle() {
       className="size-9 rounded-xl"
       onClick={handleClick}
     >
-      <SunIcon className="dark:-rotate-90 size-5 rotate-0 scale-100 transition-all dark:scale-0" />
-      <MoonIcon className="absolute size-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <SunIcon className="dark:-rotate-90 rotate-0 scale-100 transition-transform dark:scale-0" />
+      <MoonIcon className="absolute rotate-90 scale-0 transition-transform dark:rotate-0 dark:scale-100" />
       <span className="sr-only">Toggle theme</span>
     </Button>
   )
@@ -80,10 +79,10 @@ function SiteHeader({ path }: { path: string }) {
                 <motion.div
                   layoutId="highlight"
                   transition={{ type: 'spring', bounce: 0.2 }}
-                  className="absolute inset-0 rounded-xl bg-primary/10"
+                  className="absolute inset-0 z-10 rounded-xl border bg-secondary/80"
                 />
               )}
-              {label}
+              <span className="relative z-20">{label}</span>
             </DynamicLink>
           ))}
         </nav>
@@ -114,19 +113,17 @@ function SiteFooter({ path }: { path: string }) {
     <footer className="container mx-auto flex flex-col items-center gap-4 p-4">
       <div className="w-full rounded-2xl bg-primary p-10 text-primary-foreground">
         <div className="grid gap-8 lg:grid-flow-col lg:grid-cols-7 lg:gap-16">
-          <div className="flex items-center lg:col-span-2">
-            <div>
-              <h4 className="font-bold text-xl">Wontory</h4>
-              <span className="text-primary-foreground/50 text-sm">
-                Frontend Developer who loves UX Improvements with Animations.
-              </span>
-              <div className="mt-4 flex gap-4 text-primary-foreground/80">
-                {FOOTER_NAV_LINKS.SOCIAL.map(({ href, icon: Icon }) => (
-                  <a key={href} href={href} target="_blank" rel="noreferrer">
-                    <Icon strokeWidth={1.5} className="size-5" />
-                  </a>
-                ))}
-              </div>
+          <div className="flex flex-col justify-center lg:col-span-2">
+            <h4 className="mb-2 font-bold text-xl">Wontory</h4>
+            <span className="text-primary-foreground/50 text-sm">
+              Frontend Developer who loves UX Improvements with Animations.
+            </span>
+            <div className="mt-4 flex gap-4 text-primary-foreground/80">
+              {FOOTER_NAV_LINKS.SOCIAL.map(({ href, icon: Icon }) => (
+                <a key={href} href={href} target="_blank" rel="noreferrer">
+                  <Icon strokeWidth={1.5} className="size-5" />
+                </a>
+              ))}
             </div>
           </div>
           <div className="flex items-center lg:col-span-3">
@@ -145,24 +142,19 @@ function SiteFooter({ path }: { path: string }) {
               </ul>
             </div>
           </div>
-          <div className="flex items-center lg:col-span-2">
-            <div className="w-full">
-              <h4 className="font-bold">Stay in touch</h4>
-              <span className="text-primary-foreground/50 text-sm">
-                Don't miss out. Get an email whenever I post, no spam.
-              </span>
-              <a
-                href="https://wontory.substack.com/subscribe"
-                target="_blank"
-                rel="noreferrer"
-                className={buttonVariants({
-                  variant: 'secondary',
-                  className: 'mt-4 w-full',
-                })}
-              >
-                Subscribe Now
-              </a>
-            </div>
+          <div className="flex flex-col justify-center lg:col-span-2">
+            <h4 className="mb-2 font-bold">Stay in touch</h4>
+            <span className="mb-4 text-primary-foreground/50 text-sm">
+              Don't miss out. Get an email whenever I post, no spam.
+            </span>
+            <a
+              href="https://wontory.substack.com/subscribe"
+              target="_blank"
+              rel="noreferrer"
+              className={buttonVariants({ variant: 'secondary' })}
+            >
+              Subscribe Now
+            </a>
           </div>
         </div>
       </div>
