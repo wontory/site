@@ -16,8 +16,8 @@
   "dependencies": {
     "@package/ui": "workspace:*",
     "@package/utility": "workspace:*",
-    "@react-three/drei": "10.0.0-rc.2",
-    "@react-three/fiber": "9.0.0-rc.8",
+    "@react-three/drei": "^10.0.0",
+    "@react-three/fiber": "^9.0.4",
     "@vercel/analytics": "catalog:",
     "@vercel/speed-insights": "catalog:",
     "leva": "^0.10.0",
