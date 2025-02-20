@@ -2,6 +2,7 @@
 
 import { useWindowVirtualizer } from '@tanstack/react-virtual'
 import { useAtomValue } from 'jotai'
+import { motion } from 'motion/react'
 import Link from 'next/link'
 import useMeasure from 'react-use-measure'
 
@@ -18,15 +19,17 @@ function ContentList() {
   const contents = useAtomValue(contentsAtom)
 
   const [ref, bounds] = useMeasure()
+  const isMeasured = bounds.width > 0
+
   const gap = 16 as const
   const lanes = getLanes(bounds.width)
 
   const windowVirtualizer = useWindowVirtualizer({
     count: contents?.length ?? 0,
     estimateSize: () => 300,
-    overscan: 6,
     gap: gap,
     lanes: lanes,
+    overscan: lanes * 2,
   })
 
   const renderList = () =>
@@ -52,15 +55,15 @@ function ContentList() {
     })
 
   return (
-    <div
+    <motion.div
       ref={ref}
       className="relative"
-      style={{
-        height: `${windowVirtualizer.getTotalSize()}px`,
-      }}
+      style={{ height: isMeasured ? windowVirtualizer.getTotalSize() : 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
     >
-      {renderList()}
-    </div>
+      {isMeasured && renderList()}
+    </motion.div>
   )
 }
 
