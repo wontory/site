@@ -10,6 +10,13 @@ const rehypeExpressiveCodeOptions: RehypeExpressiveCodeOptions = {
   themes: ['min-dark', 'min-light'],
   themeCssSelector: (theme) => `.${theme.type}`,
   plugins: [pluginCollapsibleSections(), pluginLineNumbers()],
+  styleOverrides: {
+    borderColor: 'var(--color-border)',
+    borderWidth: '1px',
+    frames: {
+      frameBoxShadowCssValue: 'none',
+    },
+  },
 }
 
 const slugify = (slug: string) => slug.split('/').slice(1).join('/')
