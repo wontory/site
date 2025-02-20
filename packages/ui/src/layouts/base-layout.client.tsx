@@ -79,10 +79,10 @@ function SiteHeader({ path }: { path: string }) {
                 <motion.div
                   layoutId="highlight"
                   transition={{ type: 'spring', bounce: 0.2 }}
-                  className="absolute inset-0 z-10 rounded-xl border bg-secondary/80 transition-colors"
+                  className="absolute inset-0 rounded-xl border bg-secondary/80 transition-colors"
                 />
               )}
-              <span className="relative z-20 text-primary transition-colors">
+              <span className="relative z-10 text-primary transition-colors">
                 {label}
               </span>
             </DynamicLink>
