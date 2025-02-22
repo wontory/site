@@ -37,11 +37,10 @@ function ContentList() {
       const content = contents?.[virtualRow.index] ?? null
       if (!content) return null
       return (
-        <Link
+        <li
           key={virtualRow.key}
           ref={windowVirtualizer.measureElement}
           data-index={virtualRow.index}
-          href={`/blog/${content.slug}`}
           className="absolute top-0 will-change-transform"
           style={{
             left: `calc(${virtualRow.lane} * (100% / ${lanes}) + ${virtualRow.lane} * ${gap / lanes}px)`,
@@ -49,13 +48,15 @@ function ContentList() {
             transform: `translateY(${virtualRow.start}px)`,
           }}
         >
-          <ContentCard content={content} />
-        </Link>
+          <Link href={`/blog/${content.slug}`}>
+            <ContentCard content={content} />
+          </Link>
+        </li>
       )
     })
 
   return (
-    <motion.div
+    <motion.ol
       ref={ref}
       className="relative"
       style={{ height: isMeasured ? windowVirtualizer.getTotalSize() : 0 }}
@@ -63,7 +64,7 @@ function ContentList() {
       animate={{ opacity: 1 }}
     >
       {isMeasured && renderList()}
-    </motion.div>
+    </motion.ol>
   )
 }
 

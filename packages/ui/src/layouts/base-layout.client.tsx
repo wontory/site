@@ -78,8 +78,9 @@ function SiteHeader({ path }: { path: string }) {
               {activePath === href && (
                 <motion.div
                   layoutId="highlight"
-                  transition={{ type: 'spring', bounce: 0.2 }}
                   className="absolute inset-0 rounded-xl border bg-secondary/80 transition-colors"
+                  initial={false}
+                  transition={{ type: 'spring', bounce: 0.2 }}
                 />
               )}
               <span className="relative z-10 text-primary transition-colors">
