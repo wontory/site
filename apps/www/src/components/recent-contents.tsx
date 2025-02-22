@@ -5,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@package/ui/components/card'
+import ky from 'ky'
 
 export type Filter = 'all' | 'post' | 'memo' | undefined
 export type Content = { slug: string; title: string; description: string }
@@ -15,9 +16,9 @@ async function RecentContents({
   filter,
   size,
 }: { filter?: Filter; size?: number }) {
-  const contents: Content[] = await fetch(
-    `${BLOG_DOMAIN}/api/contents?filter=${filter}&size=${size}`,
-  ).then((res) => res.json())
+  const contents: Content[] = await ky
+    .get(`${BLOG_DOMAIN}/api/contents?filter=${filter}&size=${size}`)
+    .json()
 
   return (
     <ol className="flex flex-col gap-2">

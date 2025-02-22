@@ -20,6 +20,7 @@
     "@react-three/fiber": "^9.0.4",
     "@vercel/analytics": "catalog:",
     "@vercel/speed-insights": "catalog:",
+    "ky": "catalog:",
     "leva": "^0.10.0",
     "motion": "catalog:",
     "next": "catalog:",
