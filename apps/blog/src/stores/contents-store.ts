@@ -6,6 +6,7 @@ import { type Memo, type Post, memo, post } from '#site/content'
 
 export type Filter = 'all' | 'post' | 'memo' | undefined
 export type SelectedFilter = 'all' | 'post' | 'memo'
+export type Content = Memo & Post
 
 const toSortedByDate = (contents: (Memo & Post)[]) => {
   const contents_copy = contents.slice()
@@ -15,7 +16,7 @@ const toSortedByDate = (contents: (Memo & Post)[]) => {
 
 const contentsStore = createStore()
 const filterAtom = atom<Filter>()
-const contentsAtom = atom<(Memo & Post)[]>()
+const contentsAtom = atom<Content[]>()
 contentsStore.set(filterAtom, undefined)
 contentsStore.set(contentsAtom, toSortedByDate([...memo, ...post]))
 

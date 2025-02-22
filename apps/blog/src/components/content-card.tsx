@@ -11,9 +11,9 @@ import {
 } from '@package/ui/components/card'
 import { ClockIcon } from '@package/ui/icons/lucide'
 
-import type { Memo, Post } from '#site/content'
+import type { Content } from '#stores/contents-store'
 
-function ContentCard({ content }: { content: Memo & Post }) {
+function ContentCard({ content }: { content: Content }) {
   return (
     <Card className="overflow-hidden shadow-xs transition-colors hover:bg-primary/5">
       {content.cover && (
