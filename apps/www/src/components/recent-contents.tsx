@@ -7,17 +7,17 @@ import {
 } from '@package/ui/components/card'
 import ky from 'ky'
 
+const { BLOG_DOMAIN } = process.env
+
 export type Filter = 'all' | 'post' | 'memo' | undefined
 export type Content = { slug: string; title: string; description: string }
-
-const { BLOG_DOMAIN } = process.env
 
 async function RecentContents({
   filter,
   size,
 }: { filter?: Filter; size?: number }) {
-  const contents: Content[] = await ky
-    .get(`${BLOG_DOMAIN}/api/contents?filter=${filter}&size=${size}`)
+  const contents = await ky
+    .get<Content[]>(`${BLOG_DOMAIN}/api/contents?filter=${filter}&size=${size}`)
     .json()
 
   return (

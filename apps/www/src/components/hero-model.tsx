@@ -27,7 +27,7 @@ function HeroModel() {
     <group scale={viewport.width / 3.5}>
       <Text
         fontSize={0.5}
-        font="/fonts/pretendard-semi-bold.otf"
+        font="/fonts/pretendard-semibold.otf"
         position={[0, 0, -1]}
       >
         <color
