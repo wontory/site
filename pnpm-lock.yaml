@@ -110,6 +110,9 @@ importers:
       jotai:
         specifier: ^2.12.1
         version: 2.12.1(@types/react@19.0.10)(react@19.0.0)
+      ky:
+        specifier: 'catalog:'
+        version: 1.7.5
       motion:
         specifier: 'catalog:'
         version: 11.18.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)

@@ -23,6 +23,7 @@
     "@tanstack/react-virtual": "^3.13.0",
     "@vercel/analytics": "catalog:",
     "@vercel/speed-insights": "catalog:",
+    "ky": "catalog:",
     "date-fns": "catalog:",
     "jotai": "^2.12.1",
     "motion": "catalog:",
