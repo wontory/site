@@ -1,4 +1,5 @@
 import { dirname, join, resolve } from 'node:path'
+
 import type { StorybookConfig } from '@storybook/react-vite'
 
 const getAbsolutePath = (value: string): string =>
