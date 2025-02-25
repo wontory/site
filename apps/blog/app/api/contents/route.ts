@@ -4,8 +4,8 @@ import type { Filter } from '#stores/contents-store'
 import type { ArrayElement } from '#types/array'
 import { extract, getContents } from '#utils/contents'
 
-export async function GET(req: NextRequest) {
-  const { searchParams } = req.nextUrl
+export async function GET(request: NextRequest) {
+  const { searchParams } = request.nextUrl
   const filter = (searchParams.get('filter') || 'all') as Filter
   const size = Number(searchParams.get('size')) || 3
 
