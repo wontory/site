@@ -1,7 +1,7 @@
 ---
 title: "대규모 목록의 렌더링을 최적화하는 방법"
 description: "TanStack Virtual로 윈도잉 기법 적용하기"
-cover: "./images/2.jpg"
+cover: "./images/2.webp"
 date: "2024-09-07"
 ---
 
@@ -26,7 +26,7 @@ date: "2024-09-07"
 로딩이 지연되거나 렌더링 성능이 저하되는 등 성능에 상당한 영향을 미칠 수 있습니다.
 이럴 때, 목록 가상화를 적용하면 DOM 조작을 최소화할 수 있어 성능 향상을 기대할 수 있습니다.
 
-![](./images/2.jpg)
+![](./images/2.webp)
 
 처음에 렌더링되는 요소의 수는 전체 목록의 매우 적은 하위 집합으로, 계속 스크롤할 때 표시되는 콘텐츠의 창(window)이 이동합니다.
 그렇기 때문에 매우 많은 수의 데이터를 한번에 렌더링하는데 필요한 비용을 줄일 수 있고, 렌더링 성능과 스크롤 성능을 향상시킬 수 있습니다.
@@ -42,7 +42,7 @@ README 프로필을 꾸밀 수 있는 Animated SVG 프로젝트인데, Simple Ic
 
 ### 1. 렌더링 관점에서의 문제점
 
-![기존 프로젝트의 아이콘 선택 영역](./images/3.png)
+![기존 프로젝트의 아이콘 선택 영역](./images/3.webp)
 
 &nbsp;
 
@@ -50,7 +50,7 @@ README 프로필을 꾸밀 수 있는 Animated SVG 프로젝트인데, Simple Ic
 
 &nbsp;
 
-![아이콘 목록의 렌더링](./images/4.png)
+![아이콘 목록의 렌더링](./images/4.webp)
 
 &nbsp;
 
@@ -60,8 +60,8 @@ README 프로필을 꾸밀 수 있는 Animated SVG 프로젝트인데, Simple Ic
 이렇게 많은 DOM Elements를 렌더링하려면 브라우저에게 꽤나 부담스러울 수 있을 것 같다는 생각을 했고,
 체감상으로도 첫 화면을 보기까지의 시간이 꽤나 오래 걸리는 것을 느낄 수 있었습니다.
 
-![Lighthouse 진단 결과 - 성능](./images/5.png)
-![](./images/6.png)
+![Lighthouse 진단 결과 - 성능](./images/5.webp)
+![](./images/6.webp)
 
 실제로 Chrome의 Lighthouse를 통해서 분석해봤을 때에도, 처참한 성능 지표와 함께
 아이콘 목록 grid 부분의 DOM Size가 너무 크다는 진단을 받을 수 있었습니다.
@@ -98,7 +98,7 @@ react-virtualized를 경량화한 [react-window](https://react-window.vercel.app
 무신사에서 사용하고 있는 [react-virtuoso](https://virtuoso.dev/),
 마지막으로 [@tanstack/react-virtual](https://tanstack.com/virtual/)이 있습니다.
 
-![](./images/9.png)
+![](./images/9.webp)
 
 [npm trends](https://npmtrends.com/@tanstack/react-virtual-vs-react-virtualized-vs-react-virtuoso-vs-react-window)를 통해서 살펴보면,
 글을 작성하고 있는 시점을 기준으로 **@tanstack/react-virtual**이 다운로드 수도 가장 많고 용량도 작으면서, 최근까지 잘 업데이트되고 있는 것을 확인할 수 있었습니다.
@@ -400,7 +400,7 @@ export { IconsList };
 
 목록 가상화를 적용한 이후의 아이콘 목록 UI입니다.
 
-![](./images/10.png)
+![](./images/10.webp)
 
 &nbsp;
 
@@ -414,8 +414,8 @@ export { IconsList };
 그리고 눈에 띄는 개선점은 로딩 속도 개선이었는데, 따로 성능을 진단해보지 않아도 체감이 가능할 수준이었습니다.
 Chrome 개발자 도구의 Performance 탭에서 확인해보면 아래 사진과 같은데,
 
-![](./images/12.png)
-![](./images/13.png)
+![](./images/12.webp)
+![](./images/13.webp)
 
 Summary의 Total을 들여다보면, 이전 1539ms에서 목록 가상화를 적용한 이후 약 1/2 수준인 733ms로 눈에 띄게 감소한 것을 확인할 수 있습니다.
 특히 목록 가상화를 도입하면서 의도했던 Loading과 Rendering, Painting 부분에서 개선이 잘 이루어진 것 같고, 그에 따른 병목 지점도 많이 줄었습니다.
