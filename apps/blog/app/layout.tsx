@@ -11,17 +11,6 @@ import '#styles/globals.css'
 export const metadata: Metadata = {
   title: { template: '%s | Wontory', default: 'Blog | Wontory' },
   description: 'My precious thoughts and inspirations.',
-  openGraph: {
-    title: { template: '%s | Wontory', default: 'Blog | Wontory' },
-    description: 'My precious thoughts and inspirations.',
-    siteName: 'Wontory',
-    locale: 'ko_KR',
-    type: 'website',
-  },
-  twitter: {
-    title: { template: '%s | Wontory', default: 'Blog | Wontory' },
-    description: 'My precious thoughts and inspirations.',
-  },
 }
 
 export default function RootLayout({

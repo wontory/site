@@ -12,19 +12,6 @@ export const metadata: Metadata = {
   title: { template: '%s | Wontory', default: 'Wontory' },
   description:
     'A front-end developer focused on UX, leveraging animations and interactions for meaningful experiences. Quickly learns and applies new technologies, actively contributing by analyzing documentation and suggesting improvements.',
-  openGraph: {
-    title: { template: '%s | Wontory', default: 'Wontory' },
-    description:
-      'A front-end developer focused on UX, leveraging animations and interactions for meaningful experiences. Quickly learns and applies new technologies, actively contributing by analyzing documentation and suggesting improvements.',
-    siteName: 'Wontory',
-    locale: 'ko_KR',
-    type: 'website',
-  },
-  twitter: {
-    title: { template: '%s | Wontory', default: 'Wontory' },
-    description:
-      'A front-end developer focused on UX, leveraging animations and interactions for meaningful experiences. Quickly learns and applies new technologies, actively contributing by analyzing documentation and suggesting improvements.',
-  },
 }
 
 export default function RootLayout({

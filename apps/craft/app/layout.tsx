@@ -11,17 +11,6 @@ import '@package/ui/styles/globals.css'
 export const metadata: Metadata = {
   title: { template: '%s | Wontory', default: 'Craft | Wontory' },
   description: "Some boring things I've created for fun.",
-  openGraph: {
-    title: { template: '%s | Wontory', default: 'Craft | Wontory' },
-    description: "Some boring things I've created for fun.",
-    siteName: 'Wontory',
-    locale: 'ko_KR',
-    type: 'website',
-  },
-  twitter: {
-    title: { template: '%s | Wontory', default: 'Craft | Wontory' },
-    description: "Some boring things I've created for fun.",
-  },
 }
 
 export default function RootLayout({
