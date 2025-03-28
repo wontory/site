@@ -16,8 +16,8 @@
   "dependencies": {
     "@package/ui": "workspace:*",
     "@package/utility": "workspace:*",
-    "@react-three/drei": "^10.0.0",
-    "@react-three/fiber": "^9.0.4",
+    "@react-three/drei": "^10.0.5",
+    "@react-three/fiber": "^9.1.0",
     "@vercel/analytics": "catalog:",
     "@vercel/speed-insights": "catalog:",
     "ky": "catalog:",
@@ -27,7 +27,7 @@
     "next-themes": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "three": "^0.173.0"
+    "three": "^0.174.0"
   },
   "devDependencies": {
     "@config/typescript": "workspace:*",
@@ -35,7 +35,7 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@types/three": "^0.173.0",
+    "@types/three": "^0.174.0",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
   }
