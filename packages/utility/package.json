@@ -1,8 +1,8 @@
 {
   "name": "@package/utility",
   "version": "0.0.0",
-  "type": "module",
   "private": true,
+  "type": "module",
   "imports": {
     "#*": ["./src/*", "./src/*.ts", "./src/*.tsx"]
   },
@@ -12,12 +12,12 @@
   "scripts": {
     "check-types": "tsc --noEmit"
   },
-  "devDependencies": {
-    "@config/typescript": "workspace:*",
-    "typescript": "catalog:"
-  },
   "dependencies": {
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.0.2"
+  },
+  "devDependencies": {
+    "@config/typescript": "workspace:*",
+    "typescript": "catalog:core"
   }
 }

@@ -1,42 +1,42 @@
 {
   "name": "www",
   "version": "0.1.0",
-  "type": "module",
   "private": true,
+  "type": "module",
   "imports": {
     "#app/*": ["./app/*", "./app/*.ts", "./app/*.tsx"],
     "#*": ["./src/*", "./src/*.ts", "./src/*.tsx"]
   },
   "scripts": {
-    "dev": "next dev --turbopack -p 3000",
     "build": "next build",
-    "start": "next start -p 3000",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "dev": "next dev --turbopack -p 3000",
+    "start": "next start -p 3000"
   },
   "dependencies": {
     "@package/ui": "workspace:*",
     "@package/utility": "workspace:*",
     "@react-three/drei": "^10.0.5",
     "@react-three/fiber": "^9.1.0",
-    "@vercel/analytics": "catalog:",
-    "@vercel/speed-insights": "catalog:",
-    "ky": "catalog:",
+    "@vercel/analytics": "catalog:vercel",
+    "@vercel/speed-insights": "catalog:vercel",
+    "ky": "catalog:data-fetch",
     "leva": "^0.10.0",
-    "motion": "catalog:",
-    "next": "catalog:",
-    "next-themes": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:",
+    "motion": "catalog:style",
+    "next": "catalog:core",
+    "next-themes": "catalog:style",
+    "react": "catalog:core",
+    "react-dom": "catalog:core",
     "three": "^0.174.0"
   },
   "devDependencies": {
     "@config/typescript": "workspace:*",
-    "@tailwindcss/postcss": "catalog:",
-    "@types/node": "catalog:",
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
+    "@tailwindcss/postcss": "catalog:style",
+    "@types/node": "catalog:core",
+    "@types/react": "catalog:core",
+    "@types/react-dom": "catalog:core",
     "@types/three": "^0.174.0",
-    "tailwindcss": "catalog:",
-    "typescript": "catalog:"
+    "tailwindcss": "catalog:style",
+    "typescript": "catalog:core"
   }
 }

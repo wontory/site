@@ -1,8 +1,8 @@
 {
   "name": "@package/ui",
   "version": "0.0.0",
-  "type": "module",
   "private": true,
+  "type": "module",
   "imports": {
     "#*": ["./src/*", "./src/*.ts", "./src/*.tsx"]
   },
@@ -15,10 +15,23 @@
     "./styles/*": "./src/styles/*"
   },
   "scripts": {
-    "generate:component": "turbo gen component",
+    "build-storybook": "storybook build",
     "check-types": "tsc --noEmit",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "generate:component": "turbo gen component",
+    "storybook": "storybook dev -p 6006"
+  },
+  "dependencies": {
+    "@package/utility": "workspace:*",
+    "@radix-ui/react-scroll-area": "^1.2.3",
+    "@radix-ui/react-select": "^2.1.6",
+    "@radix-ui/react-slot": "^1.1.2",
+    "cva": "1.0.0-beta.2",
+    "lucide-react": "^0.484.0",
+    "motion": "catalog:style",
+    "next": "catalog:core",
+    "next-themes": "catalog:style",
+    "react": "catalog:core",
+    "react-dom": "catalog:core"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",
@@ -30,27 +43,14 @@
     "@storybook/react": "^8.6.10",
     "@storybook/react-vite": "^8.6.10",
     "@storybook/test": "^8.6.10",
-    "@tailwindcss/postcss": "catalog:",
+    "@tailwindcss/postcss": "catalog:style",
     "@turbo/gen": "^2.4.4",
-    "@types/node": "catalog:",
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
+    "@types/node": "catalog:core",
+    "@types/react": "catalog:core",
+    "@types/react-dom": "catalog:core",
     "storybook": "^8.6.10",
-    "tailwindcss": "catalog:",
-    "typescript": "catalog:",
+    "tailwindcss": "catalog:style",
+    "typescript": "catalog:core",
     "vite": "^6.2.3"
-  },
-  "dependencies": {
-    "@package/utility": "workspace:*",
-    "@radix-ui/react-scroll-area": "^1.2.3",
-    "@radix-ui/react-select": "^2.1.6",
-    "@radix-ui/react-slot": "^1.1.2",
-    "cva": "1.0.0-beta.2",
-    "lucide-react": "^0.484.0",
-    "motion": "catalog:",
-    "next": "catalog:",
-    "next-themes": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:"
   }
 }

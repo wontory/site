@@ -3,12 +3,15 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev",
-    "start": "turbo start",
     "check": "biome check",
     "check:write": "biome check --write",
     "check:write:unsafe": "biome check --write --unsafe",
-    "prepare": "lefthook install"
+    "dev": "turbo dev",
+    "prepare": "lefthook install",
+    "start": "turbo start"
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
@@ -22,8 +25,5 @@
   "packageManager": "pnpm@10.4.1",
   "engines": {
     "node": ">=18"
-  },
-  "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
   }
 }
