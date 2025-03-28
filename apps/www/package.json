@@ -27,7 +27,7 @@
     "next-themes": "catalog:style",
     "react": "catalog:core",
     "react-dom": "catalog:core",
-    "three": "^0.174.0"
+    "three": "^0.175.0"
   },
   "devDependencies": {
     "@config/typescript": "workspace:*",
