@@ -1,35 +1,35 @@
 {
   "name": "craft",
   "version": "0.1.0",
-  "type": "module",
   "private": true,
+  "type": "module",
   "imports": {
     "#app/*": ["./app/*", "./app/*.ts", "./app/*.tsx"],
     "#*": ["./src/*", "./src/*.ts", "./src/*.tsx"]
   },
   "scripts": {
-    "dev": "next dev --turbopack -p 3002",
     "build": "next build",
-    "start": "next start -p 3002",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "dev": "next dev --turbopack -p 3002",
+    "start": "next start -p 3002"
   },
   "dependencies": {
     "@package/ui": "workspace:*",
     "@package/utility": "workspace:*",
-    "@vercel/analytics": "catalog:",
-    "@vercel/speed-insights": "catalog:",
-    "motion": "catalog:",
-    "next": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:"
+    "@vercel/analytics": "catalog:vercel",
+    "@vercel/speed-insights": "catalog:vercel",
+    "motion": "catalog:style",
+    "next": "catalog:core",
+    "react": "catalog:core",
+    "react-dom": "catalog:core"
   },
   "devDependencies": {
     "@config/typescript": "workspace:*",
-    "@tailwindcss/postcss": "catalog:",
-    "@types/node": "catalog:",
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
-    "tailwindcss": "catalog:",
-    "typescript": "catalog:"
+    "@tailwindcss/postcss": "catalog:style",
+    "@types/node": "catalog:core",
+    "@types/react": "catalog:core",
+    "@types/react-dom": "catalog:core",
+    "tailwindcss": "catalog:style",
+    "typescript": "catalog:core"
   }
 }

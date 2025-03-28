@@ -1,18 +1,18 @@
 {
   "name": "blog",
   "version": "0.1.0",
-  "type": "module",
   "private": true,
+  "type": "module",
   "imports": {
     "#app/*": ["./app/*", "./app/*.ts", "./app/*.tsx"],
     "#site/content": "./.velite/index.js",
     "#*": ["./src/*", "./src/*.ts", "./src/*.tsx", "./src/*.css"]
   },
   "scripts": {
-    "dev": "next dev --turbopack -p 3001",
     "build": "next build",
-    "start": "next start -p 3001",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "dev": "next dev --turbopack -p 3001",
+    "start": "next start -p 3001"
   },
   "dependencies": {
     "@expressive-code/plugin-collapsible-sections": "^0.40.2",
@@ -20,32 +20,32 @@
     "@giscus/react": "^3.1.0",
     "@package/ui": "workspace:*",
     "@package/utility": "workspace:*",
-    "@tanstack/react-virtual": "^3.13.0",
-    "@vercel/analytics": "catalog:",
-    "@vercel/speed-insights": "catalog:",
-    "date-fns": "catalog:",
-    "jotai": "^2.12.1",
-    "ky": "catalog:",
-    "motion": "catalog:",
-    "next": "catalog:",
-    "next-themes": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:",
+    "@tanstack/react-virtual": "^3.13.5",
+    "@vercel/analytics": "catalog:vercel",
+    "@vercel/speed-insights": "catalog:vercel",
+    "date-fns": "catalog:util",
+    "jotai": "^2.12.2",
+    "ky": "catalog:data-fetch",
+    "motion": "catalog:style",
+    "next": "catalog:core",
+    "next-themes": "catalog:style",
+    "react": "catalog:core",
+    "react-dom": "catalog:core",
     "react-use-measure": "^2.1.7",
     "rehype-expressive-code": "^0.40.2",
     "rehype-slug": "^6.0.0",
-    "satori": "^0.12.1"
+    "satori": "^0.12.2"
   },
   "devDependencies": {
     "@config/typescript": "workspace:*",
-    "@tailwindcss/postcss": "catalog:",
+    "@tailwindcss/postcss": "catalog:style",
     "@tailwindcss/typography": "^0.5.16",
     "@types/mdx": "^2.0.13",
-    "@types/node": "catalog:",
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
-    "tailwindcss": "catalog:",
-    "typescript": "catalog:",
+    "@types/node": "catalog:core",
+    "@types/react": "catalog:core",
+    "@types/react-dom": "catalog:core",
+    "tailwindcss": "catalog:style",
+    "typescript": "catalog:core",
     "velite": "^0.2.2"
   }
 }

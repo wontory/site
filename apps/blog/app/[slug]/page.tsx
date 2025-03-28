@@ -23,7 +23,10 @@ export const generateMetadata = async ({
 
   if (!content) return {}
 
-  return { title: content.title, description: content.description }
+  return {
+    title: content.title,
+    description: content.description,
+  }
 }
 
 export const generateStaticParams = () =>
