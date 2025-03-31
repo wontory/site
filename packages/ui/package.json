@@ -51,6 +51,6 @@
     "storybook": "^8.6.11",
     "tailwindcss": "catalog:style",
     "typescript": "catalog:core",
-    "vite": "^6.2.3"
+    "vite": "^6.2.4"
   }
 }
