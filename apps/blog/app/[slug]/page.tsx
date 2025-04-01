@@ -56,7 +56,7 @@ export default async function Content({
           </span>
         </div>
       </PageHeader>
-      <article className="prose dark:prose-invert container mx-auto my-8 max-w-screen-md text-justify transition-colors">
+      <article className="prose dark:prose-invert container mx-auto my-8 max-w-screen-md transition-colors">
         <MDXContent code={content.content} />
       </article>
       <aside className="container sticky bottom-6 z-10 mx-auto flex max-w-screen-md justify-center">
